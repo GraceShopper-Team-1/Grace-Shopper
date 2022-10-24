@@ -6,6 +6,7 @@ const Book = require('./models/Book')
 const Author = require('./models/Author')
 
 //associations could go here
+// or here
 
 Book.belongsToMany(User, {through: 'User_Books'})
 User.belongsToMany(Book, {through: 'User_Books'})
