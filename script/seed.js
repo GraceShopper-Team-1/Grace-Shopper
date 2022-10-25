@@ -2,7 +2,7 @@
 
 const {
   db,
-  models: { User, Book },
+  models: { User, Product },
 } = require("../server/db");
 const axios = require("axios");
 
@@ -22,7 +22,7 @@ async function seed() {
   const books = data.results.books;
 
   books.map((book) => {
-    Book.create({
+    Product.create({
       title: book.title,
       author: book.author,
       coverImage: book.book_image,
