@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Route, Routes } from "react-router-dom";
+import AllProducts from "../features/allProducts/AllProducts";
 import AuthForm from "../features/auth/AuthForm";
 import Home from "../features/home/Home";
 import SingleProduct from "../features/singleProduct/SingleProduct";
@@ -24,6 +25,7 @@ const AppRoutes = () => {
         <Routes>
           <Route path="/*" element={<Home />} />
           <Route to="/home" element={<Home />} />
+          <Route path="/products" element={<AllProducts />} />
           <Route path="/products/:productId" element={<SingleProduct />} />
         </Routes>
       ) : (
@@ -40,6 +42,8 @@ const AppRoutes = () => {
             path="/signup"
             element={<AuthForm name="signup" displayName="Sign Up" />}
           />
+          
+
           <Route path="/products/:productId" element={<SingleProduct />} />
         </Routes>
       )}
