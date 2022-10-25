@@ -17,7 +17,7 @@ router.get("/", async (req, res, next) => {
 // GET api/orders/:orderId
 router.get("/:orderId", async (req, res, next) => {
 	try {
-		const order = await Order.findByPk(req.params.authorId);
+		const order = await Order.findByPk(req.params.orderId);
 		res.json(order);
 	} catch (err) {
 		next(err);
