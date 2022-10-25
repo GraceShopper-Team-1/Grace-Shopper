@@ -29,3 +29,37 @@ router.get("/:userId", async (req, res, next) => {
 	}
 });
 
+// POST /api/users
+router.post("/", async (req, res, next) => {
+	try {
+		const user = await User.create(req.body);
+		res.status(201).json(user);
+	} catch (error) {
+		next(error);
+	}
+});
+
+// PUT /api/users/:userId
+router.put("/:userId", async (req, res, next) => {
+	try {
+		const user = await User.findByPk(req.params.userId, {
+			attributes: ["id", "username"],
+		});
+		res.json(await user.update(req.body));
+	} catch (error) {
+		next(error);
+	}
+});
+
+// DELETE /api/users/:userId
+router.delete("/:userId", async (req, res, next) => {
+	try {
+		const user = await User.findByPk(req.params.userId, {
+      attributes: ['id', 'username'],
+    })
+		await user.destroy();
+		res.sendStatus(204);
+	} catch (error) {
+		next(error);
+	}
+});
