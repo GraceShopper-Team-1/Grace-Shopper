@@ -7,9 +7,9 @@ const Book = db.define("book", {
     type: Sequelize.STRING,
     allowNull: false,
   },
-  // author: {
-  //   type: Sequelize.STRING,
-  // },
+  author: {
+    type: Sequelize.STRING,
+  },
   genre: {
     type: Sequelize.STRING,
   },
@@ -17,7 +17,7 @@ const Book = db.define("book", {
     type: Sequelize.STRING,
   },
   price: {
-    type: Sequelize.FLOAT,
+    type: Sequelize.INTEGER,
   },
   publishedDate: {
     type: Sequelize.DATE,
