@@ -5,9 +5,12 @@ const User = require('./models/User')
 const Book = require('./models/Book')
 const Author = require('./models/Author')
 
-//associations could go here
-// or here
+// other potential models: Cart, Genre
 
+Book.belongsTo(Author);
+Author.hasMany(Book);
+
+// is this really many-to-many?
 Book.belongsToMany(User, {through: 'User_Books'})
 User.belongsToMany(Book, {through: 'User_Books'})
 

@@ -13,14 +13,14 @@ const Book = db.define("book", {
   genre: {
     type: Sequelize.STRING,
   },
-  coverImage: {
+  coverImageUrl: {
     type: Sequelize.STRING,
   },
   price: {
     type: Sequelize.FLOAT,
   },
   publishedDate: {
-    type: Sequelize.DATE,
+    type: Sequelize.INTEGER,
   },
   pages: {
     type: Sequelize.INTEGER,
@@ -34,9 +34,9 @@ const Book = db.define("book", {
   coverType: {
     type: Sequelize.STRING,
   },
-  isbn: {
-    type: Sequelize.STRING,
-  },
+  // isbn: {
+  //   type: Sequelize.STRING,
+  // },
 });
 
 module.exports = Book;
