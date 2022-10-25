@@ -4,6 +4,7 @@ const {
 } = require("../db");
 module.exports = router;
 
+// GET api/books
 router.get("/", async (req, res, next) => {
 	try {
 		const books = await Book.findAll({ include: Author });
@@ -12,3 +13,5 @@ router.get("/", async (req, res, next) => {
 		next(err);
 	}
 });
+
+// GET api/books/:bookId

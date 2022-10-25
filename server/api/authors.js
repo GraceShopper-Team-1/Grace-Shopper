@@ -4,6 +4,7 @@ const {
 } = require("../db");
 module.exports = router;
 
+// GET api/authors
 router.get("/", async (req, res, next) => {
 	try {
 		const authors = await Author.findAll();
@@ -12,3 +13,5 @@ router.get("/", async (req, res, next) => {
 		next(err);
 	}
 });
+
+// GET api/authors/:authorId
