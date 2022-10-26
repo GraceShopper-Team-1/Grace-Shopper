@@ -16,6 +16,7 @@ export const addToCart = createAsyncThunk(
 			coverImage,
 			price,
 			id,
+			productId: id,
 			orderId: 1,
 		}); // updating order_products db, testing with orderId 1
 		console.log("data", data);
