@@ -22,6 +22,7 @@ async function seed() {
 	const books = data.results.books;
 
 	books.map((book) => {
+		
 		Product.create({
 			title: book.title,
 			author: book.author,

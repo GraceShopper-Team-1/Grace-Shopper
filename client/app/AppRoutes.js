@@ -6,6 +6,7 @@ import AuthForm from "../features/auth/AuthForm";
 import Home from "../features/home/Home";
 import SingleProduct from "../features/singleProduct/SingleProduct";
 import Cart from "../features/cart/Cart";
+import LoadingScreen from "../features/LoadingScreen/LoadingScreen";
 import { me } from "./store";
 
 /**
@@ -29,6 +30,7 @@ const AppRoutes = () => {
 					<Route path="/products" element={<AllProducts />} />
 					<Route path="/products/:productId" element={<SingleProduct />} />
 					<Route path="/cart" element={<Cart />} />
+          <Route path="loading" element={<LoadingScreen/>} />
 					<Route path="*" element={"Not found!"} />
 				</Routes>
 			) : (
