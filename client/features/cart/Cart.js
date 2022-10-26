@@ -1,9 +1,10 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { fetchAllProducts } from "./allProductsSlice";
+import { fetchAllProducts } from "../allProducts/allProductsSlice";
 
-function AllProducts() {
+function Cart() {
+	// placeholder code, to replace
 	const dispatch = useDispatch();
 	const products = useSelector((state) => state.allProducts.allProducts);
 
@@ -12,11 +13,11 @@ function AllProducts() {
 	}, [dispatch]);
 
 	return (
-		<div id="all-products">
-			<h3>Bestsellers</h3>
+		<div id="shopping-cart">
+			<h3>Shopping Cart</h3>
 			<div className="column-container">
 				{products.map((product) => (
-					<div className="product-entry" key={product.id}>
+					<div className="product-entry">
 						<Link to={`/products/${product.id}`}>
 							<img
 								src={product.coverImage}
@@ -27,7 +28,6 @@ function AllProducts() {
 							<h5>{product.author}</h5>
 							<p>${product.price}</p>
 						</Link>
-            <button type="submit">Add to cart</button>
 					</div>
 				))}
 			</div>
@@ -35,4 +35,4 @@ function AllProducts() {
 	);
 }
 
-export default AllProducts;
+export default Cart;
