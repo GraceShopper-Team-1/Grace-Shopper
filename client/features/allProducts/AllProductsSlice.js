@@ -9,21 +9,17 @@ export const fetchAllProducts = createAsyncThunk(
   }
 );
 
+const initialState= []
 
 const allProductsSlice = createSlice({
   name: "allProducts",
-  initialState: [],
+  initialState,
   reducers: {},
   extraReducers: (builder) => {
     builder.addCase(fetchAllProducts.fulfilled, (state, action) => {
-      console.log(state, '<-state')
-      state.push(action.payload);
+      return (state = action.payload) ;
     });
   },
 });
-
-// export const selectProducts = (state) => {
-//   return state.authors;
-// };
 
 export default allProductsSlice.reducer;

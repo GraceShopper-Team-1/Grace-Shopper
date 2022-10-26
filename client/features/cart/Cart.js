@@ -5,7 +5,7 @@ import { fetchCart } from "./cartSlice";
 
 function Cart() {
 	const dispatch = useDispatch();
-	const cart = useSelector((state) => state.cart.cart);
+	const cart = useSelector((state) => state.cart);
 
 	useEffect(() => {
 		dispatch(fetchCart());

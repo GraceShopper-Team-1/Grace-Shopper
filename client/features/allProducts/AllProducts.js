@@ -6,7 +6,8 @@ import { addToCart } from "../cart/cartSlice";
 
 function AllProducts() {
 	const dispatch = useDispatch();
-	const products = useSelector((state) => state.allProducts.allProducts);
+	const products = useSelector((state) => state.allProducts);
+	console.log(products, 'PRODUCTS***')
 
 	useEffect(() => {
 		dispatch(fetchAllProducts());
