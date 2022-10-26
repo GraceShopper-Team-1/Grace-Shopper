@@ -4,6 +4,11 @@ const {
 } = require("../db");
 module.exports = router;
 
+// o: Why do you have so much code for the backend before you have a frontend for
+// 	said backend code. Please avoid piece mealing your features so you complete
+// 	part of said feature now, and the second half later. That can lead to issues
+// 	down the line.
+
 // GET api/orders
 router.get("/", async (req, res, next) => {
 	try {
@@ -28,6 +33,7 @@ router.post("/products", async (req, res, next) => {
 // GET api/orders/:orderId
 router.get("/:orderId", async (req, res, next) => {
 	try {
+		// o: please handle the scenario where the order is not found
 		const order = await Order.findByPk(req.params.orderId);
 		res.json(order);
 	} catch (err) {
@@ -44,6 +50,9 @@ router.post("/", async (req, res, next) => {
 		next(error);
 	}
 });
+
+// o: please avoid doing this: 1) if code doesn't work, remove it 2) if code does
+// 	work and you are saving it for later... you are using git incorrectly
 
 // ****** Order Products ******
 

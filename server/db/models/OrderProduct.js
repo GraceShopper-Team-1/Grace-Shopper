@@ -1,6 +1,7 @@
 const db = require("../db");
 const Sequelize = require("sequelize");
 
+// o: is this code being used anywhere yet?
 const OrderProduct = db.define("order_product", {
 	purchaseQuantity: {
 		type: Sequelize.INTEGER,
@@ -30,6 +31,8 @@ const OrderProduct = db.define("order_product", {
 	description: {
 		type: Sequelize.TEXT,
 	},
+	// o: please do not leave code in that will be used in the future, add code to main
+  // when its fully ready
 	// language: {
 	//   type: Sequelize.STRING,
 	// },
