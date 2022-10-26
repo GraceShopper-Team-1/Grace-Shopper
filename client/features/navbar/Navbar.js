@@ -14,7 +14,7 @@ const Navbar = () => {
 
 	return (
 		<div>
-			<h1>Book Worm</h1>
+			<h1>Bookworm</h1>
 			<nav>
 				{isLoggedIn ? (
 					<div className="navbar">
