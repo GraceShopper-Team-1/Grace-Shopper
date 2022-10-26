@@ -7,6 +7,7 @@ export const fetchCart = createAsyncThunk("cart/fetchAll", async () => {
 });
 
 // split into POST and PUT for more than one click?
+// updating order_products db, testing with orderId 1
 export const addToCart = createAsyncThunk(
 	"cart/add",
 	async ({ id, title, author, coverImage, price }) => {
@@ -18,7 +19,7 @@ export const addToCart = createAsyncThunk(
 			id,
 			productId: id,
 			orderId: 1,
-		}); // updating order_products db, testing with orderId 1
+		});
 		console.log("data", data);
 		return data;
 	}
