@@ -28,6 +28,7 @@ function Cart() {
 							<p>${cartItem.price}</p>
 							<p>Quantity: {cartItem.purchaseQuantity}</p>
 						</Link>
+						<button type="button">Remove from cart</button>
 					</div>
 				))}
 			</div>
