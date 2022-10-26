@@ -1,6 +1,8 @@
+
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {fetchFeaturedProducts} from "./homeSlice"
+
 
 const Home = (props) => {
   const dispatch = useDispatch();
@@ -14,6 +16,7 @@ const Home = (props) => {
   const username = useSelector((state) => state.auth.me.username);
 
   return (
+
    <div>
       <div className="welcome-user">
     <h3>Welcome, {username}</h3>
@@ -31,6 +34,7 @@ const Home = (props) => {
 							<h5>{product.author}</h5>
     </div>))}
     
+
     </div>
     </div>)
 };

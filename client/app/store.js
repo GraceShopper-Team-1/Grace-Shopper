@@ -15,6 +15,7 @@ const store = configureStore({
 		home: homeReducer
 	},
 	middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(logger),
+
 });
 
 export default store;
