@@ -6,10 +6,13 @@ import { useParams } from "react-router-dom";
 function SingleProduct() {
 	const dispatch = useDispatch();
 
+	// o: you don't need the extra spacing here
 	const { productId } = useParams();
 
+	// o: I would destructure this for clarity
 	const product = useSelector((state) => state.singleProduct);
 
+	// o: please remove console.logs that are just for testing
 	console.log(product);
 
 	useEffect(() => {

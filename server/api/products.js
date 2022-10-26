@@ -17,6 +17,7 @@ router.get("/", async (req, res, next) => {
 // GET api/products/:productsId
 router.get("/:productId", async (req, res, next) => {
   try {
+    // o: please handle the scenario where the product is not found
     const product = await Product.findByPk(req.params.productId);
     res.json(product);
   } catch (err) {
@@ -37,6 +38,7 @@ router.post("/", async (req, res, next) => {
 // PUT /api/products/:productsId
 router.put("/:productId", async (req, res, next) => {
   try {
+    // o: please handle the scenario where the product is not found
     const product = await Product.findByPk(req.params.productId);
     res.json(await product.update(req.body));
   } catch (error) {
@@ -47,6 +49,7 @@ router.put("/:productId", async (req, res, next) => {
 // DELETE /api/products/:productId
 router.delete("/:productId", async (req, res, next) => {
   try {
+    // o: please handle the scenario where the product is not found
     const product = await Product.findByPk(req.params.productId);
     await product.destroy();
     res.sendStatus(204);

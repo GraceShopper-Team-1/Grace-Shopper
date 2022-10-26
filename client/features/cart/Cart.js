@@ -5,6 +5,8 @@ import { fetchCart } from "./cartSlice";
 
 function Cart() {
 	const dispatch = useDispatch();
+	// o: the fact that you are needing to retrieve cart from cart
+	// 	like this is redundant, please review how your state is being set in the slice
 	const cart = useSelector((state) => state.cart.cart);
 
 	useEffect(() => {
@@ -15,6 +17,7 @@ function Cart() {
 		<div id="shopping-cart">
 			<h3>Shopping Cart</h3>
 			<div className="column-container">
+				{/* o: destructuring is your friend */}
 				{cart.map((cartItem) => (
 					<div className="product-entry" key={cartItem.id}>
 						<Link to={`/products/${cartItem.id}`}>

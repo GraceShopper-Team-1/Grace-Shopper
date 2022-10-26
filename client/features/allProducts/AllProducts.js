@@ -6,6 +6,9 @@ import { addToCart } from "../cart/cartSlice";
 
 function AllProducts() {
 	const dispatch = useDispatch();
+
+	// o: the fact that you are needing to retrieve allProducts from allProducts
+	// 	like this is redundant, please review how your state is being set in the slice
 	const products = useSelector((state) => state.allProducts.allProducts);
 
 	useEffect(() => {
@@ -20,6 +23,7 @@ function AllProducts() {
 		<div id="all-products">
 			<h3>Bestsellers</h3>
 			<div className="column-container">
+				{/* o: destructuring is your friend */}
 				{products.map((product) => (
 					<div className="product-entry" key={product.id}>
 						<Link to={`/products/${product.id}`}>
