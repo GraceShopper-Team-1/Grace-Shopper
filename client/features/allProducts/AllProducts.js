@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { fetchAllProducts } from "./allProductsSlice";
+import { addToCart } from "../cart/cartSlice";
 
 function AllProducts() {
 	const dispatch = useDispatch();
@@ -10,6 +11,10 @@ function AllProducts() {
 	useEffect(() => {
 		dispatch(fetchAllProducts());
 	}, [dispatch]);
+
+	const handleAddToCart = (product) => {
+		dispatch(addToCart(product));
+	};
 
 	return (
 		<div id="all-products">
@@ -27,7 +32,9 @@ function AllProducts() {
 							<h5>{product.author}</h5>
 							<p>${product.price}</p>
 						</Link>
-            <button type="submit">Add to cart</button>
+						<button type="submit" onClick={() => handleAddToCart(product)}>
+							Add to cart
+						</button>
 					</div>
 				))}
 			</div>

@@ -23,9 +23,7 @@ function SingleProduct() {
 			</header>
 			<div>
 				<body>
-					<p>
-						<h2>{product.title}</h2> by {product.author}
-					</p>
+					<h2>{product.title}</h2> by {product.author}
 				</body>
 			</div>
 			<div>

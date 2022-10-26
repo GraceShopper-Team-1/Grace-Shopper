@@ -4,9 +4,9 @@ import { Link } from "react-router-dom";
 import { fetchAllProducts } from "../allProducts/allProductsSlice";
 
 function Cart() {
-	// placeholder code, to replace
+	// placeholder code for reference -- we will replace most of this later
 	const dispatch = useDispatch();
-	const products = useSelector((state) => state.allProducts.allProducts);
+	const cart = useSelector((state) => state.cart.cart);
 
 	useEffect(() => {
 		dispatch(fetchAllProducts());
@@ -16,20 +16,23 @@ function Cart() {
 		<div id="shopping-cart">
 			<h3>Shopping Cart</h3>
 			<div className="column-container">
-				{products.map((product) => (
-					<div className="product-entry">
-						<Link to={`/products/${product.id}`}>
-							<img
-								src={product.coverImage}
-								alt="Cover Image"
-								className="product-img"
-							/>
-							<h3>{product.title}</h3>
-							<h5>{product.author}</h5>
-							<p>${product.price}</p>
-						</Link>
+				{cart.map((cartItem) => (
+					<div className="cart-entry" key={cartItem.id}>
+						<img
+							src={cartItem.coverImage}
+							alt="Cover Image"
+							className="product-img"
+						/>
+						<h3>{cartItem.title}</h3>
+						<h5>{cartItem.author}</h5>
+						<p>${cartItem.price}</p>
+						<p>Quantity: {cartItem.purchaseQuantity}</p>
 					</div>
 				))}
+			</div>
+			<div>
+				<h3>Order details:</h3>
+				<button type="submit">Checkout</button>
 			</div>
 		</div>
 	);
