@@ -1,5 +1,13 @@
+* {
+  box-sizing: border-box;
+  text-align: center;
+}
+
 body {
-  font-family: sans-serif;
+  font-family: "Arvo", serif, sans-serif;
+  background: whitesmoke;
+  color: black;
+  font-weight: 400px;
 }
 
 a {
@@ -8,6 +16,16 @@ a {
 
 label {
   display: block;
+}
+
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.navbar a, button {
+  flex: row;
 }
 
 nav a {
@@ -19,3 +37,56 @@ form div {
   margin: 1em;
   display: inline-block;
 }
+
+/* maybe all-products */
+.column-container {
+  display: flex;
+}
+
+.product-entry {
+  width: 100%;
+  flex: row;
+  flex-wrap: wrap;
+  padding: 20px;
+}
+
+.product-img {
+  object-fit: fill;
+  height: 250px;
+  width: 165px;
+  border-radius: 4px;
+  box-shadow: 2px 2px 8px gray;
+}
+
+.product-img:hover {
+  transition: 150ms ease;
+  transform: scale(1.03);
+}
+
+.single-img {
+  object-fit: fill;
+  height: 379px;
+  width: 250px;
+  border-radius: 4px;
+  box-shadow: 2px 2px 8px gray;
+  margin-top: 15px;
+}
+
+.cart-icon {
+  height: 30px;
+  width: 30px;
+}
+
+button {
+  height: 38px;
+  padding: 0 10px;
+  color: #555;
+  text-align: center;
+  font-weight: 600;
+  letter-spacing: .1rem;
+  background-color: white;
+  border-radius: 4px;
+  border: 1px solid gray;
+  cursor: pointer;
+}
+
