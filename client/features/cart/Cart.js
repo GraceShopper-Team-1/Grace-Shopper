@@ -1,14 +1,14 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { fetchAllProducts } from "../allProducts/allProductsSlice";
+import { fetchCart } from "./cartSlice";
 
 function Cart() {
 	const dispatch = useDispatch();
 	const cart = useSelector((state) => state.cart.cart);
 
 	useEffect(() => {
-		dispatch(fetchAllProducts());
+		dispatch(fetchCart());
 	}, [dispatch]);
 
 	return (
@@ -16,7 +16,7 @@ function Cart() {
 			<h3>Shopping Cart</h3>
 			<div className="column-container">
 				{cart.map((cartItem) => (
-					<div className="cart-entry" key={cartItem.id}>
+					<div className="product-entry" key={cartItem.id}>
 						<Link to={`/products/${cartItem.id}`}>
 							<img
 								src={cartItem.coverImage}
