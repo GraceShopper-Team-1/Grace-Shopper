@@ -1,6 +1,6 @@
 const router = require("express").Router();
 const {
-	models: { Order, orderProducts},
+	models: { Order, OrderProduct },
 } = require("../db");
 module.exports = router;
 
@@ -11,6 +11,17 @@ router.get("/", async (req, res, next) => {
 		res.json(orders);
 	} catch (err) {
 		next(err);
+	}
+});
+
+// Adding new product to cart and order_products database
+// POST api/orders/products
+router.post("/products", async (req, res, next) => {
+	try {
+		const orderProduct = await OrderProduct.create(req.body);
+		res.status(201).json(orderProduct);
+	} catch (error) {
+		next(error);
 	}
 });
 
@@ -35,7 +46,6 @@ router.post("/", async (req, res, next) => {
 });
 
 // ****** Order Products ******
-// orders--> orderProducts ==> 
 
 // PUT /api/orders/:orderId
 // router.put("/:orderId", async (req, res, next) => {
@@ -59,4 +69,3 @@ router.post("/", async (req, res, next) => {
 // 		next(error);
 // 	}
 // });
-
