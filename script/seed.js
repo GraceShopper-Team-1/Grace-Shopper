@@ -19,6 +19,9 @@ async function seed() {
 	const { data } = await axios.get(
 		`https://api.nytimes.com/svc/books/v3/lists/2013-04-20/hardcover-fiction.json?api-key=${key}`
 	);
+
+	// will update seed file with extra api calls from database
+	
 	const books = data.results.books;
 
 	books.map((book) => {
