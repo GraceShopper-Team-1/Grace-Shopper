@@ -1,5 +1,7 @@
 import React from "react";
 import { useSelector } from "react-redux";
+import Banner from "./Banner";
+import Row from "./Row";
 
 /**
  * COMPONENT
@@ -9,8 +11,14 @@ const Home = (props) => {
 
   return (
     <div>
-      <h3>Welcome, {username ? username : "to BookWorm"}</h3>
-      <h1>THIS IS THE HOMEPAGE!*</h1>
+      <h3>Welcome {username ?`, ${username}` : "to BookWorm"}</h3>
+      <Banner />
+      <hr className="linebreak-below-banner"/>
+      <Row title={'Best Selling Novels'} />
+      <Row title={'Horror Books'} />
+      <Row title={'Fiction Books'} />
+      <Row title={'Romance Books'} />
+      <Row title={'Astrology Books'} />
     </div>
   );
 };
