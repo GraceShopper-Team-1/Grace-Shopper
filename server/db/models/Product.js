@@ -27,9 +27,9 @@ const Product = db.define("product", {
   description: {
     type: Sequelize.TEXT,
   },
-  // language: {
-  //   type: Sequelize.STRING,
-  // },
+  language: {
+    type: Sequelize.STRING,
+  },
   coverType: {
     type: Sequelize.STRING,
   },
