@@ -2,6 +2,7 @@ const router = require("express").Router();
 const {
   models: { Product, Order },
 } = require("../db");
+const isAdmin = require('./admin');
 module.exports = router;
 
 // GET api/products
@@ -25,7 +26,7 @@ router.get("/:productId", async (req, res, next) => {
 });
 
 // POST api/products
-router.post("/", async (req, res, next) => {
+router.post("/", isAdmin, async (req, res, next) => {
   try {
     const product = await Product.create(req.body);
     res.status(201).json(product);
@@ -35,7 +36,7 @@ router.post("/", async (req, res, next) => {
 });
 
 // PUT /api/products/:productsId
-router.put("/:productId", async (req, res, next) => {
+router.put("/:productId", isAdmin, async (req, res, next) => {
   try {
     const product = await Product.findByPk(req.params.productId);
     res.json(await product.update(req.body));
@@ -45,7 +46,7 @@ router.put("/:productId", async (req, res, next) => {
 });
 
 // DELETE /api/products/:productId
-router.delete("/:productId", async (req, res, next) => {
+router.delete("/:productId", isAdmin, async (req, res, next) => {
   try {
     const product = await Product.findByPk(req.params.productId);
     await product.destroy();
