@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchSingleProduct } from "./singleProductSlice";
+import { fetchSingleProduct } from "./singleProductSlice.js";
 import { useParams } from "react-router-dom";
 
 function SingleProduct() {
