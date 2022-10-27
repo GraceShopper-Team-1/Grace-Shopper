@@ -6,51 +6,76 @@ const {
 } = require("../server/db");
 const axios = require("axios");
 
-const key = "LAb33WvyGlQbTJuFxzvopNpRoK8dgaKH";
+const key = "AIzaSyBPi4jWcnylqFsNv_xcztwzeyXlel5uOsI";
 
-/**
- * seed - this function clears the database, updates tables to
- *      match the models, and populates the database.
- */
 async function seed() {
-  await db.sync({ force: true }); // clears db and matches models to tables
+  await db.sync({ force: true });
   console.log("db synced!");
 
-  const one = await axios.get(
-    `https://api.nytimes.com/svc/books/v3/lists/2013-04-20/hardcover-fiction.json?api-key=${key}`
+  const getAstro = axios.get(
+    `https://www.googleapis.com/books/v1/volumes?q=Astronomy&key=${key}`
   );
-  const two = await axios.get(
-    `https://api.nytimes.com/svc/books/v3/lists/young-adult-paperback-monthly.json?api-key=${key}`
+  const getNonFiction = axios.get(
+    `https://www.googleapis.com/books/v1/volumes?q=NonFiction&key=${key}`
   );
-  let books = one.data.results.books;
+  const getFiction = axios.get(
+    `https://www.googleapis.com/books/v1/volumes?q=Fiction&key=${key}`
+  );
+  const getRomance = axios.get(
+    `https://www.googleapis.com/books/v1/volumes?q=Romance&key=${key}`
+  );
+  const getHorror = axios.get(
+    `https://www.googleapis.com/books/v1/volumes?q=Horror&key=${key}`
+  );
+  const getBio = axios.get(
+    `https://www.googleapis.com/books/v1/volumes?q=Biography&key=${key}`
+  );
 
-  let books2 = two.data.results.books;
+  const getNovels = axios.get(
+    `https://www.googleapis.com/books/v1/volumes?q=Novel&key=${key}`
+  );
 
-  books.map((book) => {
-    Product.create({
-      title: book.title,
-      author: book.author,
-      coverImageUrl: book.book_image,
-      description: book.description,
-      isbn: book.primary_isbn10,
-      price: parseInt(book.price),
-    });
-  });
+  await axios
+    .all([
+      getAstro,
+      getBio,
+      getFiction,
+      getHorror,
+      getNonFiction,
+      getNovels,
+      getRomance,
+    ])
+    .then(
+      axios.spread(function (res1, res2, res3, res4, res5, res6, res7) {
+        let books = [
+          ...res1.data.items,
+          ...res2.data.items,
+          ...res3.data.items,
+          ...res4.data.items,
+          ...res5.data.items,
+          ...res6.data.items,
+          ...res7.data.items,
+        ];
 
-  books2.map((book) => {
-    Product.create({
-      title: book.title,
-      author: book.author,
-      coverImageUrl: book.book_image,
-      description: book.description,
-      isbn: book.primary_isbn10,
-      price: parseInt(book.price),
-    });
-  });
+        books.map((book) => {
+          Product.create({
+            title: book.volumeInfo.title ? book.volumeInfo.title : "Mystery Book",
+            author: book.volumeInfo.authors ? book.volumeInfo.authors[0] : null,
+			 genre: book.volumeInfo.categories ? book.volumeInfo.categories[0] : null,
+            coverImage: book.volumeInfo.imageLinks ? book.volumeInfo.imageLinks.thumbnail : "https://vip12.hachette.co.uk/wp-content/uploads/2018/07/missingbook.png",
+			publishedDate: book.volumeInfo.publishedDate,
+            description: book.volumeInfo.description,
+			pages: book.volumeInfo.pageCount,
+             isbn: book.volumeInfo.industryIdentifiers ? book.volumeInfo.industryIdentifiers[0].identifier : null,
+            price: (Math.random() * 93).toFixed(2),
+          });
+        });
+      })
+    );
 
   // Creating Users
   const users = await Promise.all([
-    User.create({ username: "cody", password: "123", isAdmin: true }),
+    User.create({ username: "cody", password: "123" , isAdmin: true}),
     User.create({ username: "murphy", password: "123", isAdmin: false }),
   ]);
 
@@ -72,11 +97,6 @@ async function seed() {
   };
 }
 
-/*
- We've separated the `seed` function from the `runSeed` function.
- This way we can isolate the error handling and exit trapping.
- The `seed` function is concerned only with modifying the database.
-*/
 async function runSeed() {
   console.log("seeding...");
   try {
@@ -91,11 +111,6 @@ async function runSeed() {
   }
 }
 
-/*
-  Execute the `seed` function, IF we ran this module directly (`node seed`).
-  `Async` functions always return a promise, so we can use `catch` to handle
-  any errors that might occur inside of `seed`.
-*/
 if (module === require.main) {
   runSeed();
 }

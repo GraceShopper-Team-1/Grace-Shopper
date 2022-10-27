@@ -10,6 +10,7 @@ const Home = (props) => {
   return (
     <div>
       <h3>Welcome, {username ? username : "to BookWorm"}</h3>
+      <h1>THIS IS THE HOMEPAGE!*</h1>
     </div>
   );
 };
