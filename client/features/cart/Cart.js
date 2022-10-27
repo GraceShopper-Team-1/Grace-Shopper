@@ -1,10 +1,11 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
-import { fetchCart } from "./cartSlice";
+import { Link, useParams } from "react-router-dom";
+import { fetchCart, removeFromCart } from "./cartSlice";
 
 function Cart() {
 	const dispatch = useDispatch();
+
 	const cart = useSelector((state) => state.cart.cart);
 
 	useEffect(() => {
@@ -17,7 +18,7 @@ function Cart() {
 			<div className="column-container">
 				{cart.map((cartItem) => (
 					<div className="product-entry" key={cartItem.id}>
-						<Link to={`/products/${cartItem.id}`}>
+						<Link to={`/products/${cartItem.productId}`}>
 							<img
 								src={cartItem.coverImage}
 								alt="Cover Image"
@@ -28,7 +29,15 @@ function Cart() {
 							<p>${cartItem.price}</p>
 							<p>Quantity: {cartItem.purchaseQuantity}</p>
 						</Link>
-						<button type="button">Remove from cart</button>
+						<button
+							type="delete"
+							onClick={async () => {
+								await dispatch(removeFromCart(cartItem.productId));
+								// await dispatch(fetchCart());
+							}}
+						>
+							Remove from cart
+						</button>
 					</div>
 				))}
 			</div>
