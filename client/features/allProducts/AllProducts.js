@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { fetchAllProducts } from "./allProductsSlice";
 import { addToCart } from "../cart/cartSlice";
 
-function allProducts() {
+function AllProducts() {
 	const dispatch = useDispatch();
 	const products = useSelector((state) => state.allProducts.allProducts);
 
@@ -42,4 +42,4 @@ function allProducts() {
 	);
 }
 
-export default allProducts;
+export default AllProducts;

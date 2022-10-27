@@ -3,10 +3,10 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link, useParams } from "react-router-dom";
 import { fetchCart, removeFromCart } from "./cartSlice";
 
-function cart() {
+function Cart() {
   const dispatch = useDispatch();
 
-  const shoppingCart = useSelector((state) => state.cart.cart);
+  const cart = useSelector((state) => state.cart.cart);
 
   useEffect(() => {
     dispatch(fetchCart());
@@ -16,7 +16,7 @@ function cart() {
     <div id="shopping-cart">
       <h3>Shopping Cart</h3>
       <div className="column-container">
-        {shoppingCart.map((cartItem) => (
+        {cart.map((cartItem) => (
           <div className="product-entry" key={cartItem.id}>
             <Link to={`/products/${cartItem.productId}`}>
               <img
@@ -49,4 +49,4 @@ function cart() {
   );
 }
 
-export default cart;
+export default Cart;
