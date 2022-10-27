@@ -2,10 +2,11 @@ const router = require("express").Router();
 const {
 	models: { Order, OrderProduct },
 } = require("../db");
+const checkForAdmin = require("./admin");
 module.exports = router;
 
 // GET api/orders
-router.get("/", async (req, res, next) => {
+router.get("/", checkForAdmin, async (req, res, next) => {
 	try {
 		const orders = await Order.findAll();
 		res.json(orders);
@@ -14,16 +15,15 @@ router.get("/", async (req, res, next) => {
 	}
 });
 
-// Adding new product to cart and order_products database
-// POST api/orders/products
-router.post("/products", async (req, res, next) => {
-	try {
-		const orderProduct = await OrderProduct.create(req.body);
-		res.status(201).json(orderProduct);
-	} catch (error) {
-		next(error);
-	}
-});
+// // POST api/orders/products
+// router.post("/products", async (req, res, next) => {
+// 	try {
+// 		const orderProduct = await OrderProduct.create(req.body);
+// 		res.status(201).json(orderProduct);
+// 	} catch (error) {
+// 		next(error);
+// 	}
+// });
 
 // GET api/orders/:orderId
 router.get("/:orderId", async (req, res, next) => {
