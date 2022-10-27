@@ -99,3 +99,12 @@ button:hover {
   background: rgb(155, 155, 242);
 }
 
+#banner {
+  position: relative;
+  height: 445px;
+    object-fit: contain;
+}
+
+#banner:hover {
+  cursor: pointer;
+}
