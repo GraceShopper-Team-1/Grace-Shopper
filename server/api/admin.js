@@ -3,9 +3,7 @@ const checkForAdmin = (req, res, next) => {
 	if (currentUser && currentUser.isAdmin) {
 		next();
 	} else {
-		const error = new Error(
-			"<h3>Access denied.<h3>"
-		);
+		const error = new Error("<h3>Access denied.<h3>");
 		error.status = 401;
 		next(error);
 	}

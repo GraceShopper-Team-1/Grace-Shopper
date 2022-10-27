@@ -2,7 +2,7 @@ const router = require("express").Router();
 const {
   models: { Product, Order },
 } = require("../db");
-const isAdmin = require('./admin');
+const checkForAdmin = require("./admin");
 module.exports = router;
 
 // GET api/products
@@ -26,32 +26,32 @@ router.get("/:productId", async (req, res, next) => {
 });
 
 // POST api/products
-router.post("/", isAdmin, async (req, res, next) => {
-  try {
-    const product = await Product.create(req.body);
-    res.status(201).json(product);
-  } catch (error) {
-    next(error);
-  }
+router.post("/", checkForAdmin, async (req, res, next) => {
+	try {
+		const product = await Product.create(req.body);
+		res.status(201).json(product);
+	} catch (error) {
+		next(error);
+	}
 });
 
 // PUT /api/products/:productsId
-router.put("/:productId", isAdmin, async (req, res, next) => {
-  try {
-    const product = await Product.findByPk(req.params.productId);
-    res.json(await product.update(req.body));
-  } catch (error) {
-    next(error);
-  }
+router.put("/:productId", checkForAdmin, async (req, res, next) => {
+	try {
+		const product = await Product.findByPk(req.params.productId);
+		res.json(await product.update(req.body));
+	} catch (error) {
+		next(error);
+	}
 });
 
 // DELETE /api/products/:productId
-router.delete("/:productId", isAdmin, async (req, res, next) => {
-  try {
-    const product = await Product.findByPk(req.params.productId);
-    await product.destroy();
-    res.sendStatus(204);
-  } catch (error) {
-    next(error);
-  }
+router.delete("/:productId", checkForAdmin, async (req, res, next) => {
+	try {
+		const product = await Product.findByPk(req.params.productId);
+		await product.destroy();
+		res.sendStatus(204);
+	} catch (error) {
+		next(error);
+	}
 });
