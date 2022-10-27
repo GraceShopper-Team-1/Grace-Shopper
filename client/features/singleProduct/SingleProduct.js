@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchSingleProduct } from "./singleProductSlice";
 import { useParams } from "react-router-dom";
 
-function singleProduct() {
+function SingleProduct() {
   const dispatch = useDispatch();
 
   const { productId } = useParams();
@@ -40,4 +40,4 @@ function singleProduct() {
   );
 }
 
-export default singleProduct;
+export default SingleProduct;
