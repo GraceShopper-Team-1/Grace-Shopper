@@ -10,7 +10,7 @@ function Cart() {
 
   useEffect(() => {
     dispatch(fetchCart());
-  }, [dispatch]);
+  }, []);
 
   return (
     <div id="shopping-cart">
