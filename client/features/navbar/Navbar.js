@@ -14,7 +14,7 @@ const Navbar = () => {
 
   return (
     <div>
-      <h1>Bookworm</h1>
+      <Link to="/home"><h1>Bookworm</h1></Link>
       <nav>
         {isLoggedIn ? (
           <div className="navbar">

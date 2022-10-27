@@ -16,7 +16,7 @@ const Product = db.define("product", {
     type: Sequelize.STRING,
   },
   price: {
-    type: Sequelize.INTEGER,
+    type: Sequelize.DECIMAL(10,2),
   },
   publishedDate: {
     type: Sequelize.DATE,
