@@ -59,15 +59,26 @@ async function seed() {
 
         books.map((book) => {
           Product.create({
-            title: book.volumeInfo.title ? book.volumeInfo.title : "Mystery Book",
+            title: book.volumeInfo.title
+              ? book.volumeInfo.title
+              : "Mystery Book",
             author: book.volumeInfo.authors ? book.volumeInfo.authors[0] : null,
-			 genre: book.volumeInfo.categories ? book.volumeInfo.categories[0] : null,
-            coverImageUrl: book.volumeInfo.imageLinks ? book.volumeInfo.imageLinks.thumbnail : "https://vip12.hachette.co.uk/wp-content/uploads/2018/07/missingbook.png",
-			publishedDate: book.volumeInfo.publishedDate,
+            genre: book.volumeInfo.categories
+              ? book.volumeInfo.categories[0]
+              : null,
+            coverImageUrl: book.volumeInfo.imageLinks
+              ? book.volumeInfo.imageLinks.thumbnail
+              : "https://vip12.hachette.co.uk/wp-content/uploads/2018/07/missingbook.png",
+            publishedDate: book.volumeInfo.publishedDate,
             description: book.volumeInfo.description,
-			pages: book.volumeInfo.pageCount,
-             isbn: book.volumeInfo.industryIdentifiers ? book.volumeInfo.industryIdentifiers[0].identifier : null,
-            price: (Math.random() * 93).toFixed(2),
+            pages: book.volumeInfo.pageCount,
+            isbn: book.volumeInfo.industryIdentifiers
+              ? book.volumeInfo.industryIdentifiers[0].identifier
+              : null,
+            price: book.saleInfo.retailPrice
+              ? book.saleInfo.retailPrice.amount
+              : (Math.random() * 93).toFixed(2),
+            language: book.volumeInfo.language,
           });
         });
       })
@@ -75,7 +86,7 @@ async function seed() {
 
   // Creating Users
   const users = await Promise.all([
-    User.create({ username: "cody", password: "123" , isAdmin: true}),
+    User.create({ username: "cody", password: "123", isAdmin: true }),
     User.create({ username: "murphy", password: "123", isAdmin: false }),
   ]);
 

@@ -31,9 +31,6 @@ const Product = db.define("product", {
   language: {
     type: Sequelize.STRING,
   },
-	coverType: Sequelize.ENUM({
-		values: ["Paperback", "Hardcover"],
-	}),
   isbn: {
     type: Sequelize.STRING,
   },
