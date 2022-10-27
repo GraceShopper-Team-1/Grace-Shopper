@@ -30,7 +30,7 @@ async function seed() {
     Product.create({
       title: book.title,
       author: book.author,
-      coverImage: book.book_image,
+      coverImageUrl: book.book_image,
       description: book.description,
       isbn: book.primary_isbn10,
       price: parseInt(book.price),
@@ -41,7 +41,7 @@ async function seed() {
     Product.create({
       title: book.title,
       author: book.author,
-      coverImage: book.book_image,
+      coverImageUrl: book.book_image,
       description: book.description,
       isbn: book.primary_isbn10,
       price: parseInt(book.price),

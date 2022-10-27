@@ -24,7 +24,7 @@ function AllProducts() {
           <div className="product-entry" key={product.id}>
             <Link to={`/products/${product.id}`}>
               <img
-                src={product.coverImage}
+                src={product.coverImageUrl}
                 alt="Cover Image"
                 className="product-img"
               />

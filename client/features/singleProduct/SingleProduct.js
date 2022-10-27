@@ -19,7 +19,7 @@ function SingleProduct() {
   return (
     <div>
       <header>
-        <img src={product.coverImage} className="single-img" />
+        <img src={product.coverImageUrl} className="single-img" />
       </header>
       <div>
         <body>
