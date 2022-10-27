@@ -20,7 +20,7 @@ function Cart() {
 					<div className="product-entry" key={cartItem.id}>
 						<Link to={`/products/${cartItem.productId}`}>
 							<img
-								src={cartItem.coverImage}
+								src={cartItem.coverImageUrl}
 								alt="Cover Image"
 								className="product-img"
 							/>
