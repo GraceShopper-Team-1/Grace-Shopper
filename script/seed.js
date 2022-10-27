@@ -35,7 +35,6 @@ async function seed() {
     `https://www.googleapis.com/books/v1/volumes?q=Novel&key=${key}`
   );
 
-
   await axios
     .all([
       getAstro,

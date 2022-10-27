@@ -10,11 +10,11 @@ export const fetchCart = createAsyncThunk("cart/fetchAll", async () => {
 // updating order_products db, testing with orderId 1
 export const addToCart = createAsyncThunk(
 	"cart/add",
-	async ({ id, title, author, coverImage, price }) => {
+	async ({ id, title, author, coverImageUrl, price }) => {
 		const { data } = await axios.post("/api/cart", {
 			title,
 			author,
-			coverImage,
+			coverImageUrl,
 			price,
 			id,
 			productId: id,

@@ -2,6 +2,7 @@ const Sequelize = require("sequelize");
 const db = require("../db");
 
 const Product = db.define("product", {
+
   title: {
     type: Sequelize.STRING,
     allowNull: false,
@@ -30,9 +31,9 @@ const Product = db.define("product", {
   language: {
     type: Sequelize.STRING,
   },
-  coverType: {
-    type: Sequelize.STRING,
-  },
+	coverType: Sequelize.ENUM({
+		values: ["Paperback", "Hardcover"],
+	}),
   isbn: {
     type: Sequelize.STRING,
   },
