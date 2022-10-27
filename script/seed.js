@@ -62,7 +62,7 @@ async function seed() {
             title: book.volumeInfo.title ? book.volumeInfo.title : "Mystery Book",
             author: book.volumeInfo.authors ? book.volumeInfo.authors[0] : null,
 			 genre: book.volumeInfo.categories ? book.volumeInfo.categories[0] : null,
-            coverImage: book.volumeInfo.imageLinks ? book.volumeInfo.imageLinks.thumbnail : "https://vip12.hachette.co.uk/wp-content/uploads/2018/07/missingbook.png",
+            coverImageUrl: book.volumeInfo.imageLinks ? book.volumeInfo.imageLinks.thumbnail : "https://vip12.hachette.co.uk/wp-content/uploads/2018/07/missingbook.png",
 			publishedDate: book.volumeInfo.publishedDate,
             description: book.volumeInfo.description,
 			pages: book.volumeInfo.pageCount,
