@@ -13,7 +13,7 @@ const Product = db.define("product", {
   genre: {
     type: Sequelize.STRING,
   },
-  coverImage: {
+  coverImageUrl: {
     type: Sequelize.STRING,
   },
   price: {
