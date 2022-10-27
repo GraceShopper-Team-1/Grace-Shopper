@@ -45,7 +45,10 @@ form div {
 
 /* maybe all-products */
 .column-container {
+  align-items: center;
   display: flex;
+  overflow-x: scroll;
+  padding: 10px;
 }
 
 .product-entry {
@@ -107,4 +110,13 @@ button:hover {
 
 #banner:hover {
   cursor: pointer;
+}
+
+.row-text-HomeScreen {
+  text-align: left;
+  margin: 10px;
+}
+
+.linebreak-below-banner{
+  margin-top: 10px;
 }
