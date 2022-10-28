@@ -10,8 +10,6 @@ function SingleProduct() {
 
   const product = useSelector((state) => state.singleProduct);
 
-  console.log(product);
-
   useEffect(() => {
     dispatch(fetchSingleProduct(productId));
   }, []);
