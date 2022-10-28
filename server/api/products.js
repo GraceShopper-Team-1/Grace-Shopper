@@ -1,28 +1,32 @@
 const router = require("express").Router();
+const sequelize = require("sequelize");
 const {
-  models: { Product, Order },
+	models: { Product, Order },
 } = require("../db");
 const checkForAdmin = require("./admin");
 module.exports = router;
 
 // GET api/products
 router.get("/", async (req, res, next) => {
-  try {
-    const product = await Product.findAll({ include: Order });
-    res.json(product);
-  } catch (err) {
-    next(err);
-  }
+	try {
+		const product = await Product.findAll({
+			include: Order,
+			order: [["author", "ASC"]],
+		});
+		res.json(product);
+	} catch (err) {
+		next(err);
+	}
 });
 
 // GET api/products/:productsId
 router.get("/:productId", async (req, res, next) => {
-  try {
-    const product = await Product.findByPk(req.params.productId);
-    res.json(product);
-  } catch (err) {
-    next(err);
-  }
+	try {
+		const product = await Product.findByPk(req.params.productId);
+		res.json(product);
+	} catch (err) {
+		next(err);
+	}
 });
 
 // POST api/products
