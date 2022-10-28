@@ -5,8 +5,9 @@ const {
   models: { User, Product, Order },
 } = require("../server/db");
 const axios = require("axios");
+require("dotenv").config();
 
-const key = "AIzaSyBPi4jWcnylqFsNv_xcztwzeyXlel5uOsI";
+const key = process.env.API_KEY;
 
 async function seed() {
   await db.sync({ force: true });
