@@ -7,7 +7,6 @@ function Cart() {
   const dispatch = useDispatch();
   const cart = useSelector((state) => state.cart.cart);
 
-
   useEffect(() => {
     dispatch(fetchCart());
   }, [dispatch]);
@@ -18,7 +17,7 @@ function Cart() {
       <div className="column-container">
         {cart.map((cartItem) => (
           <div className="product-entry" key={cartItem.id}>
-            <Link to={`/products/${cartItem.productId}`}>
+            <Link to={`/products/${cartItem.id}`}>
               <img
                 src={cartItem.coverImageUrl}
                 alt="Cover Image"
@@ -32,7 +31,7 @@ function Cart() {
             <button
               type="delete"
               onClick={async () => {
-                await dispatch(removeFromCart(cartItem.productId));
+                await dispatch(removeFromCart(cartItem.id));
                 // await dispatch(fetchCart());
               }}
             >
