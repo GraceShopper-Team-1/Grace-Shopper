@@ -8,6 +8,7 @@ body {
   background: whitesmoke;
   color: rgb(0, 0, 96);
   font-weight: 400px;
+  margin: 0px;
 }
 
 a {
@@ -33,7 +34,7 @@ label {
   flex: row;
 }
 
-nav a {
+nav a, nav h4 {
   display: inline-block;
   margin: 1em;
 }

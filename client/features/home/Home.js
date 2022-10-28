@@ -1,5 +1,5 @@
 import React from "react";
-import { useSelector } from "react-redux";
+// import { useSelector } from "react-redux";
 import Banner from "./Banner";
 import Row from "./Row";
 
@@ -7,20 +7,19 @@ import Row from "./Row";
  * COMPONENT
  */
 const Home = (props) => {
-  const username = useSelector((state) => state.auth.me.username);
+	// const username = useSelector((state) => state.auth.me.username);
 
-  return (
-    <div>
-      <h3>Welcome {username ?`, ${username}` : "to BookWorm"}</h3>
-      <Banner />
-      <hr className="linebreak-below-banner"/>
-      <Row title={'Best Selling Novels'} />
-      <Row title={'Horror Books'} />
-      <Row title={'Fiction Books'} />
-      <Row title={'Romance Books'} />
-      <Row title={'Astrology Books'} />
-    </div>
-  );
+	return (
+		<div>
+			<Banner />
+			<hr className="linebreak-below-banner" />
+			<Row title={"Best Selling Novels"} />
+			<Row title={"Horror Books"} />
+			<Row title={"Fiction Books"} />
+			<Row title={"Romance Books"} />
+			<Row title={"Astrology Books"} />
+		</div>
+	);
 };
 
 export default Home;

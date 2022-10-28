@@ -77,7 +77,7 @@ async function seed() {
               : null,
             price: book.saleInfo.retailPrice
               ? book.saleInfo.retailPrice.amount
-              : (Math.random() * 93).toFixed(2),
+              : (Math.random() * 30).toFixed(2),
             language: book.volumeInfo.language,
           });
         });
