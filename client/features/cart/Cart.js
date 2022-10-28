@@ -20,21 +20,21 @@ function Cart() {
 			<h3>Shopping Cart</h3>
 			<div className="column-container">
 				{cart.map((cartItem) => (
-					<li key={cartItem.id} className="product-entry">
-						<Link to={`/products/${cartItem.id}`}>
+					<li key={cartItem.product.id} className="product-entry">
+						<Link to={`/products/${cartItem.product.id}`}>
 							<img
-								src={cartItem.coverImageUrl}
+								src={cartItem.product.coverImageUrl}
 								alt="Cover Image"
 								className="product-img"
 							/>
-							<h3>{cartItem.title}</h3>
-							<h5>{cartItem.author}</h5>
-							<p>${cartItem.price}</p>
+							<h3>{cartItem.product.title}</h3>
+							<h5>{cartItem.product.author}</h5>
+							<p>${cartItem.product.price}</p>
 							<p>Quantity: {cartItem.purchaseQuantity}</p>
 						</Link>
 						<button
 							type="button"
-							onClick={() => handleRemoveFromCart(cartItem.id)}
+							onClick={() => handleRemoveFromCart(cartItem.product.id)}
 						>
 							Remove from cart
 						</button>

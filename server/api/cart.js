@@ -1,14 +1,26 @@
 const router = require("express").Router();
 const {
-	models: { OrderProduct, Product },
+	models: { Order, OrderProduct, Product },
 } = require("../db");
 module.exports = router;
 
-// GET api/cart -- get all items in cart, should be /:userId
+// GET api/cart -- get all items in cart, should be /:userId, status: "unfulfilled"
 router.get("/", async (req, res, next) => {
 	try {
-		const cart = await OrderProduct.findAll();
+		const cart = await Order.findOne({
+			where: { userId: req.params.userId },
+			include: { model: Product, as: OrderProduct },
+		});
+		res.json(cart);
+	} catch (error) {
+		console.log(error);
+		next(error);
+	}
+});
 
+router.get("/", async (req, res, next) => {
+	try {
+		const cart= await Order.findAll
 		const cartItemIds = cart.map((item) => item.productId);
 		const books = await Product.findAll({
 			where: {
@@ -32,7 +44,7 @@ router.post("/", async (req, res, next) => {
 	}
 });
 
-// DELETE /api/cart/:cartId
+// DELETE /api/cart/:cartId -- remove item from cart
 router.delete("/:cartItemId", async (req, res, next) => {
 	try {
 		const cartItem = await OrderProduct.findByPk(req.params.cartItemId);
