@@ -5,22 +5,23 @@ const {
 module.exports = router;
 
 // GET api/cart -- get all items in cart, should be /:userId, status: "unfulfilled"
-router.get("/", async (req, res, next) => {
-	try {
-		const cart = await Order.findOne({
-			where: { userId: req.params.userId },
-			include: { model: Product, as: OrderProduct },
-		});
-		res.json(cart);
-	} catch (error) {
-		console.log(error);
-		next(error);
-	}
-});
+// router.get("/:userId", async (req, res, next) => {
+// 	try {
+// 		const cart = await Order.findOne({
+// 			where: { userId: req.params.userId },
+// 			include: { model: Product, as: OrderProduct },
+// 		});
+// 		res.json(cart);
+// 	} catch (error) {
+// 		console.log(error);
+// 		next(error);
+// 	}
+// });
 
+// old GET
 router.get("/", async (req, res, next) => {
 	try {
-		const cart= await Order.findAll
+		const cart= await OrderProduct.findAll();
 		const cartItemIds = cart.map((item) => item.productId);
 		const books = await Product.findAll({
 			where: {
