@@ -20,7 +20,7 @@ function Cart() {
 			<h3>Shopping Cart</h3>
 			<div className="column-container">
 				{cart.map((cartItem) => (
-					<div className="product-entry" key={cartItem.id}>
+					<li key={cartItem.id} className="product-entry">
 						<Link to={`/products/${cartItem.id}`}>
 							<img
 								src={cartItem.coverImageUrl}
@@ -38,7 +38,7 @@ function Cart() {
 						>
 							Remove from cart
 						</button>
-					</div>
+					</li>
 				))}
 			</div>
 			<div>

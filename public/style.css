@@ -34,6 +34,10 @@ label {
   flex: row;
 }
 
+li {
+  list-style: none;
+}
+
 nav a, nav h4 {
   display: inline-block;
   margin: 1em;
