@@ -20,14 +20,10 @@ function SingleProduct() {
         <img src={product.coverImageUrl} className="single-img" />
       </header>
       <div>
-        <body>
           <h2>{product.title}</h2> by {product.author}
-        </body>
       </div>
       <div>
-        <body>
           <p>{product.description}</p>
-        </body>
         <h2>${product.price}</h2>
         <p>{product.isbn}</p>
       </div>
