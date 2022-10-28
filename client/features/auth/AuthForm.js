@@ -22,17 +22,20 @@ const AuthForm = ({ name, displayName }) => {
   };
 
   return (
-    <div>
+    <div className="auth-form">
+      <span>Enter Credentials Below</span>
+      <hr/>
       <form onSubmit={handleSubmit} name={name}>
-        <div>
+        <div className ="username">
           <label htmlFor="username">
             <small>Username</small>
           </label>
           <input name="username" type="text" />
         </div>
-        <div>
+       
+        <div className="password">
           <label htmlFor="password">
-            <small>Password</small>
+            <small className="pass">Password</small>
           </label>
           <input name="password" type="password" />
         </div>
@@ -43,7 +46,7 @@ const AuthForm = ({ name, displayName }) => {
       </form>
       <div>
         <Link to="/">
-          <button>Guest Login</button>
+          <button>Continue As Guest</button>
         </Link>
       </div>
     </div>
