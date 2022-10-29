@@ -6,13 +6,14 @@ import { fetchCart, removeFromCart } from "./cartSlice";
 function Cart() {
 	const dispatch = useDispatch();
 	const cart = useSelector((state) => state.cart.cart);
+	const userId = useSelector((state) => state.auth.me.id);
 
 	const handleRemoveFromCart = (id) => {
 		dispatch(removeFromCart(id));
 	};
 
 	useEffect(() => {
-		dispatch(fetchCart());
+		dispatch(fetchCart(userId));
 	}, [dispatch]);
 
 	return (
@@ -20,21 +21,21 @@ function Cart() {
 			<h3>Shopping Cart</h3>
 			<div className="column-container">
 				{cart.map((cartItem) => (
-					<li key={cartItem.product.id} className="product-entry">
-						<Link to={`/products/${cartItem.product.id}`}>
+					<li key={cartItem.id} className="product-entry">
+						<Link to={`/products/${cartItem.id}`}>
 							<img
-								src={cartItem.product.coverImageUrl}
+								src={cartItem.coverImageUrl}
 								alt="Cover Image"
 								className="product-img"
 							/>
-							<h3>{cartItem.product.title}</h3>
-							<h5>{cartItem.product.author}</h5>
-							<p>${cartItem.product.price}</p>
-							<p>Quantity: {cartItem.purchaseQuantity}</p>
+							<h3>{cartItem.title}</h3>
+							<h5>{cartItem.author}</h5>
+							<p>${cartItem.price}</p>
+							<p>Quantity: {cartItem.orders.order_product.purchaseQuantity}</p>
 						</Link>
 						<button
 							type="button"
-							onClick={() => handleRemoveFromCart(cartItem.product.id)}
+							onClick={() => handleRemoveFromCart(cartItem.id)}
 						>
 							Remove from cart
 						</button>

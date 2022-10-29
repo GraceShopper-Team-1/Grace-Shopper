@@ -5,6 +5,7 @@ import { logout } from "../../app/store";
 
 const Navbar = () => {
 	const isLoggedIn = useSelector((state) => !!state.auth.me.id);
+	const isAdmin = useSelector((state) => !!state.auth.me.isAdmin);
 	const username = useSelector((state) => state.auth.me.username);
 	const dispatch = useDispatch();
 	const navigate = useNavigate();

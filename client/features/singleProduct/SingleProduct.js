@@ -5,9 +5,7 @@ import { useParams } from "react-router-dom";
 
 function SingleProduct() {
   const dispatch = useDispatch();
-
   const { productId } = useParams();
-
   const product = useSelector((state) => state.singleProduct);
 
   useEffect(() => {

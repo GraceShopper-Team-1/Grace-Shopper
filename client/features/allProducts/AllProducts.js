@@ -6,7 +6,7 @@ import { addToCart } from "../cart/cartSlice";
 
 function AllProducts() {
 	const dispatch = useDispatch();
-	const products = useSelector((state) => state.allProducts.allProducts);
+	const products = useSelector((state) => state.allProducts.products);
 
 	useEffect(() => {
 		dispatch(fetchAllProducts());
@@ -32,7 +32,7 @@ function AllProducts() {
 							<h5>{product.author}</h5>
 							<p>${product.price}</p>
 						</Link>
-						<button type="submit" onClick={() => handleAddToCart(product)}>
+						<button type="button" onClick={() => handleAddToCart(product)}>
 							Add to cart
 						</button>
 					</li>
