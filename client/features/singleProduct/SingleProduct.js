@@ -3,9 +3,10 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchSingleProduct } from "./singleProductSlice";
 import { useParams } from "react-router-dom";
 
-function SingleProduct() {
+function SingleProduct(props) {
   const dispatch = useDispatch();
-  const { productId } = useParams();
+  let { productId } = useParams();
+  if (!productId) productId = props.productId;
   const product = useSelector((state) => state.singleProduct);
 
   useEffect(() => {

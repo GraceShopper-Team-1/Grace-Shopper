@@ -1,10 +1,18 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
-//just have this for test purposes
+
 export const fetchAllProducts = createAsyncThunk(
 	"products/fetchAll",
 	async () => {
 		const { data } = await axios.get("/api/products");
+		return data;
+	}
+);
+
+export const deleteProduct = createAsyncThunk(
+	"products/delete",
+	async (productId) => {
+		const { data } = await axios.delete(`/api/products/${productId}`);
 		return data;
 	}
 );
@@ -20,6 +28,8 @@ const allProductsSlice = createSlice({
 	extraReducers: (builder) => {
 		builder.addCase(fetchAllProducts.fulfilled, (state, action) => {
 			state.products = action.payload;
+		}).addCase(deleteProduct.fulfilled, (state, action) => {
+			state.products = state.products.filter(product => product.id !== action.payload)
 		});
 	},
 });

@@ -8,7 +8,8 @@ import {
 	SingleProduct,
 	Cart,
 	ProductsDashboard,
-	AddProduct
+	AddProduct,
+	EditProduct,
 } from "../features";
 import { me } from "./store";
 
@@ -37,6 +38,10 @@ const AppRoutes = () => {
 					<Route path="/admin/home" element={"admin home!"}></Route>
 					<Route path="/admin/products" element={<ProductsDashboard />}></Route>
 					<Route path="/admin/products/add" element={<AddProduct />}></Route>
+					<Route
+						path="/admin/products/:productId"
+						element={<EditProduct />}
+					></Route>
 					<Route path="/admin/users" element={"users dashboard!"}></Route>
 					<Route path="/orders" element={"orders!"}></Route>
 				</Routes>

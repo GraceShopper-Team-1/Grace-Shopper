@@ -1,14 +1,16 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { fetchAllProducts } from "../allProducts/allProductsSlice";
+import {
+	fetchAllProducts,
+	deleteProduct,
+} from "../allProducts/allProductsSlice";
 import AddProduct from "./AddProduct";
 
 function ProductsDashboard() {
 	const dispatch = useDispatch();
 	const products = useSelector((state) => state.allProducts.products);
 	const userId = useSelector((state) => state.auth.me.id);
-	// const userId = req.user.id;
 	console.log("userId", userId);
 
 	useEffect(() => {
@@ -21,7 +23,7 @@ function ProductsDashboard() {
 
 	return (
 		<div id="products-dashboard">
-			<Link to={'/admin/products/add'}>
+			<Link to={"/admin/products/add"}>
 				<button type="button">Add product</button>
 			</Link>
 			{products.map((product) => (
@@ -36,9 +38,9 @@ function ProductsDashboard() {
 						<p>{product.author}</p>
 						<p>${product.price}</p>
 					</Link>
-					<button type="button" onClick={() => handleDeleteProduct(product.id)}>
-						Edit
-					</button>
+					<Link to={`/admin/products/${product.id}`}>
+						<button type="button">Edit</button>
+					</Link>
 					<button type="button" onClick={() => handleDeleteProduct(product.id)}>
 						Delete
 					</button>
