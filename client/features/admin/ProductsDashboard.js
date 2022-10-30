@@ -21,6 +21,9 @@ function ProductsDashboard() {
 
 	return (
 		<div id="products-dashboard">
+			<button type="button" onClick={() => handleDeleteProduct(product.id)}>
+				Add product
+			</button>
 			{products.map((product) => (
 				<li key={product.id} className="admin-entry">
 					<Link to={`/products/${product.id}`}>
@@ -33,6 +36,9 @@ function ProductsDashboard() {
 						<p>{product.author}</p>
 						<p>${product.price}</p>
 					</Link>
+					<button type="button" onClick={() => handleDeleteProduct(product.id)}>
+						Edit
+					</button>
 					<button type="button" onClick={() => handleDeleteProduct(product.id)}>
 						Delete
 					</button>
