@@ -1,12 +1,14 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Route, Routes } from "react-router-dom";
-import { AllProducts, AuthForm, Home, SingleProduct, Cart } from "../features";
-// import AllProducts from "../features/allProducts/AllProducts";
-// import AuthForm from "../features/auth/AuthForm";
-// import Home from "../features/home/Home";
-// import SingleProduct from "../features/singleProduct/SingleProduct";
-// import Cart from "../features/cart/Cart";
+import {
+	AllProducts,
+	AuthForm,
+	Home,
+	SingleProduct,
+	Cart,
+	ProductsDashboard,
+} from "../features";
 import { me } from "./store";
 
 /**
@@ -31,10 +33,7 @@ const AppRoutes = () => {
 					<Route path="/products" element={<AllProducts />} />
 					<Route path="/products/:productId" element={<SingleProduct />} />
 					<Route path="/cart" element={<Cart />} />
-					<Route
-						path="admin-home"
-						element={"admin home!"}
-					></Route>
+					<Route path="admin-home" element={"admin home!"}></Route>
 					<Route
 						path="products-dashboard"
 						element={"products dashboard!"}

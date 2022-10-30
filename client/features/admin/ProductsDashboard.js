@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { fetchAllProducts } from "./AllProductsSlice";
 import { addToCart } from "../cart/cartSlice";
 
-function AllProducts() {
+function ProductsDashboard() {
 	const dispatch = useDispatch();
 	const products = useSelector((state) => state.allProducts.products);
 	const userId = useSelector((state) => state.auth.me.id);
@@ -45,4 +45,4 @@ function AllProducts() {
 	);
 }
 
-export default AllProducts;
+export default ProductsDashboard;
