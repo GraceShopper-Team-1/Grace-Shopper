@@ -9,6 +9,14 @@ export const fetchAllProducts = createAsyncThunk(
 	}
 );
 
+export const addProduct = createAsyncThunk(
+	"products/add",
+	async (productId) => {
+		const { data } = await axios.post(`/api/products/${productId}`);
+		return data;
+	}
+);
+
 export const deleteProduct = createAsyncThunk(
 	"products/delete",
 	async (productId) => {
@@ -26,11 +34,18 @@ const allProductsSlice = createSlice({
 	initialState,
 	reducers: {},
 	extraReducers: (builder) => {
-		builder.addCase(fetchAllProducts.fulfilled, (state, action) => {
-			state.products = action.payload;
-		}).addCase(deleteProduct.fulfilled, (state, action) => {
-			state.products = state.products.filter(product => product.id !== action.payload)
-		});
+		builder
+			.addCase(fetchAllProducts.fulfilled, (state, action) => {
+				state.products = action.payload;
+			})
+			.addCase(addProduct.fulfilled, (state, action) => {
+				state.products.push(action.payload);
+			})
+			.addCase(deleteProduct.fulfilled, (state, action) => {
+				state.products = state.products.filter(
+					(product) => product.id !== action.payload
+				);
+			});
 	},
 });
 

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { editProduct } from "../allProducts/allProductsSlice";
+import { editProduct } from "../singleProduct/singleProductSlice";
 import SingleProduct from "../singleProduct/SingleProduct";
 
 const EditProduct = () => {
