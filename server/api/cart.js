@@ -19,7 +19,7 @@ router.get("/:userId", async (req, res, next) => {
 		// }
 		// const cartProducts = cart.products;
 		// console.log("cartProducts", cartProducts);
-		res.json(cart[0]);
+		res.json(cart);
 	} catch (error) {
 		console.log(error);
 		next(error);
