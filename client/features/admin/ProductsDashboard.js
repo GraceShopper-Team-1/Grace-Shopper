@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { fetchAllProducts } from "./AllProductsSlice";
+import { fetchAllProducts } from "../allProducts/allProductsSlice";
 import { addToCart } from "../cart/cartSlice";
 
 function ProductsDashboard() {
@@ -33,10 +33,7 @@ function ProductsDashboard() {
 						<p>{product.author}</p>
 						<p>${product.price}</p>
 					</Link>
-					<button
-						type="button"
-						onClick={() => handleDeleteProduct(product.id)}
-					>
+					<button type="button" onClick={() => handleDeleteProduct(product.id)}>
 						Delete
 					</button>
 				</li>
