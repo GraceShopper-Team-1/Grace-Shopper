@@ -2,18 +2,21 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { editProduct } from "../singleProduct/singleProductSlice";
 import SingleProduct from "../singleProduct/SingleProduct";
+import { useParams } from "react-router-dom";
 
 const EditProduct = () => {
 	const [title, setTitle] = useState("");
 	const [author, setAuthor] = useState("");
 	const [coverImageUrl, setCoverImageUrl] = useState("");
 	const [price, setPrice] = useState(0);
+	const { productId } = useParams();
+	console.log("THIS IS PRODUCTID IN EDITPRODUCT", productId);
 
 	const dispatch = useDispatch();
 
 	const handleSubmit = (event) => {
 		event.preventDefault();
-		dispatch(editProduct({ title, author, coverImageUrl, price }));
+		dispatch(editProduct({ productId, title, author, coverImageUrl, price }));
 		setTitle("");
 		setAuthor("");
 		setCoverImageUrl("");
