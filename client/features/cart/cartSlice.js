@@ -6,19 +6,20 @@ export const fetchCart = createAsyncThunk("cart/fetchAll", async (userId) => {
 	return data;
 });
 
-// split into POST and PUT for more than one click?
+// return Product?
 // updating order_products db, testing with orderId 1
 export const addToCart = createAsyncThunk(
 	"cart/add",
-	async ({ id, title, author, coverImageUrl, price }) => {
-		const { data } = await axios.put(`/api/cart`, {
-			title,
-			author,
-			coverImageUrl,
-			price,
-			id,
-			productId: id,
-			orderId: 1,
+	async ({ userId, productId }) => {
+		console.log("this is userId and productId in slice", userId, productId);
+		const { data } = await axios.put(`/api/cart/${userId}`, {
+			// title,
+			// author,
+			// coverImageUrl,
+			// price,
+			// id,
+			productId,
+			// orderId: 1,
 		});
 		console.log("data", data);
 		return data;
@@ -50,11 +51,11 @@ const cartSlice = createSlice({
 				state.cart = action.payload;
 			})
 			.addCase(addToCart.fulfilled, (state, action) => {
-				const itemInCart = state.cart.find(
-					(item) => item.id === action.payload.id
+				const cartItem = state.cart.find(
+					(item) => item.productId === action.payload.productId
 				);
-				if (itemInCart) {
-					itemInCart.purchaseQuantity++;
+				if (cartItem) {
+					cartItem.purchaseQuantity++;
 				} else {
 					state.cart.push({ ...action.payload, purchaseQuantity: 1 });
 				}

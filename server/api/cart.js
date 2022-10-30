@@ -7,11 +7,19 @@ module.exports = router;
 // GET api/cart -- get all items in cart, should be /:userId, status: "unfulfilled"
 router.get("/:userId", async (req, res, next) => {
 	try {
-		const cart = await Order.findOne({
+		const cart = await Order.findOrCreate({
 			where: { userId: req.params.userId, status: "unfulfilled" },
 			include: Product,
 		});
-		res.json(cart);
+		// if (!cart) {
+		// 	const cart = await Order.create({
+		// 		where: { userId: req.params.userId, status: "unfulfilled" },
+		// 		include: Product,
+		// 	});
+		// }
+		// const cartProducts = cart.products;
+		// console.log("cartProducts", cartProducts);
+		res.json(cart[0]);
 	} catch (error) {
 		console.log(error);
 		next(error);
@@ -48,11 +56,19 @@ router.get("/:userId", async (req, res, next) => {
 // isAdminOrUser
 router.put("/:userId", async (req, res, next) => {
 	try {
-		const currentOrder = await Order.findOrCreate({
+		const currentOrder = await Order.findOne({
 			where: { userId: req.params.userId, status: "unfulfilled" },
-			include: Product,
+			include: { model: Product, as: OrderProduct },
 		});
-		res.json(currentOrder);
+		// console.log("currentOrder", currentOrder);
+		// console.log("req.body", req.body);
+		const orderProduct = await OrderProduct.findOrCreate({
+			where: { orderId: currentOrder.id, productId: req.body.productId },
+			// include: { model: Product }, // need to do new association for this
+		});
+		// await currentOrder.update(quantity);
+		// await orderProduct.save();
+		res.json(orderProduct[0]);
 	} catch (error) {
 		console.log(error);
 		next(error);

@@ -7,13 +7,17 @@ import { addToCart } from "../cart/cartSlice";
 function AllProducts() {
 	const dispatch = useDispatch();
 	const products = useSelector((state) => state.allProducts.products);
+	const userId = useSelector((state) => state.auth.me.id);
+	// const userId = req.user.id;
+	console.log("userId", userId);
 
 	useEffect(() => {
 		dispatch(fetchAllProducts());
 	}, [dispatch]);
 
-	const handleAddToCart = (product) => {
-		dispatch(addToCart(product));
+	const handleAddToCart = (userId, productId) => {
+		console.log("this is inside the event handler", userId, productId);
+		dispatch(addToCart({ userId, productId }));
 	};
 
 	return (
@@ -32,7 +36,10 @@ function AllProducts() {
 							<h5>{product.author}</h5>
 							<p>${product.price}</p>
 						</Link>
-						<button type="button" onClick={() => handleAddToCart(product)}>
+						<button
+							type="button"
+							onClick={() => handleAddToCart(userId, product.id)}
+						>
 							Add to cart
 						</button>
 					</li>
