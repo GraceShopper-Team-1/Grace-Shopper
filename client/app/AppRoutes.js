@@ -8,6 +8,7 @@ import {
 	SingleProduct,
 	Cart,
 	ProductsDashboard,
+	AddProduct
 } from "../features";
 import { me } from "./store";
 
@@ -33,12 +34,10 @@ const AppRoutes = () => {
 					<Route path="/products" element={<AllProducts />} />
 					<Route path="/products/:productId" element={<SingleProduct />} />
 					<Route path="/cart" element={<Cart />} />
-					<Route path="admin-home" element={"admin home!"}></Route>
-					<Route
-						path="/admin/products"
-						element={<ProductsDashboard />}
-					></Route>
-					<Route path="users-dashboard" element={"users dashboard!"}></Route>
+					<Route path="/admin/home" element={"admin home!"}></Route>
+					<Route path="/admin/products" element={<ProductsDashboard />}></Route>
+					<Route path="/admin/products/add" element={<AddProduct />}></Route>
+					<Route path="/admin/users" element={"users dashboard!"}></Route>
 					<Route path="/orders" element={"orders!"}></Route>
 				</Routes>
 			) : isLoggedIn ? (

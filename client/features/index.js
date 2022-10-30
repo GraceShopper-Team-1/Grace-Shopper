@@ -5,3 +5,4 @@ export { default as Cart } from "./cart/Cart";
 export { default as Home } from "./home/Home";
 export { default as Navbar } from "./navbar/Navbar";
 export { default as ProductsDashboard } from "./admin/ProductsDashboard";
+export { default as AddProduct } from "./admin/AddProduct";

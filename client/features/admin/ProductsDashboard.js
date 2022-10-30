@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { fetchAllProducts } from "../allProducts/allProductsSlice";
-import { addToCart } from "../cart/cartSlice";
+import AddProduct from "./AddProduct";
 
 function ProductsDashboard() {
 	const dispatch = useDispatch();
@@ -21,9 +21,9 @@ function ProductsDashboard() {
 
 	return (
 		<div id="products-dashboard">
-			<button type="button" onClick={() => handleDeleteProduct(product.id)}>
-				Add product
-			</button>
+			<Link to={'/admin/products/add'}>
+				<button type="button">Add product</button>
+			</Link>
 			{products.map((product) => (
 				<li key={product.id} className="admin-entry">
 					<Link to={`/products/${product.id}`}>
