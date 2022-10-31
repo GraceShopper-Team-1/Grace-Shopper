@@ -10,6 +10,8 @@ import {
   ProductsDashboard,
   AddProduct,
   EditProduct,
+  NotFoundPage,
+  OrderSuccess
 } from "../features";
 import SingleUser from "../features/admin/SingleUser";
 import UsersDashboard from "../features/admin/UsersDashboard";
@@ -32,8 +34,8 @@ const AppRoutes = () => {
     <div>
       {isLoggedIn && isAdmin ? (
         <Routes>
-          <Route path="/*" element={<Home />} />
-          <Route to="/home" element={<Home />} />
+          <Route path="/" element={<Home />} />
+          <Route path="/home" element={<Home />} />
           <Route path="/products" element={<AllProducts />} />
           <Route path="/products/:productId" element={<SingleProduct />} />
           <Route path="/cart" element={<Cart />} />
@@ -48,19 +50,22 @@ const AppRoutes = () => {
           ></Route>
           <Route path="/admin/users" element={"users dashboard!"}></Route>
           <Route path="/orders" element={"orders!"}></Route>
+          <Route path="/success" element={<OrderSuccess />} />
+          <Route path="/*" element={<NotFoundPage />}> </Route>
         </Routes>
       ) : isLoggedIn ? (
         <Routes>
-          <Route path="/*" element={<Home />} />
-          <Route to="/home" element={<Home />} />
+           <Route path="/" element={<Home />} />
+          <Route path="/home" element={<Home />} />
           <Route path="/products" element={<AllProducts />} />
           <Route path="/products/:productId" element={<SingleProduct />} />
           <Route path="/cart" element={<Cart />} />
+          <Route path="/*" element={<NotFoundPage />} />
         </Routes>
       ) : (
         <Routes>
-          <Route path="/*" element={<Home />} />
-          <Route to="/home" element={<Home />} />
+          <Route path="/" element={<Home />} />
+          <Route path="/home" element={<Home />} />
           <Route
             path="/login"
             element={<AuthForm name="login" displayName="Login" />}
@@ -72,6 +77,7 @@ const AppRoutes = () => {
           <Route path="/products" element={<AllProducts />} />
           <Route path="/products/:productId" element={<SingleProduct />} />
           <Route path="/cart" element={<Cart />} />
+          <Route path="/*" element={<NotFoundPage />} />
         </Routes>
       )}
     </div>

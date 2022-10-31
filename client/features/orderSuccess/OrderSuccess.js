@@ -2,7 +2,7 @@ import React from 'react'
 
 function OrderSuccess() {
   return (
-    <div>OrderSuccess Page
+    <div>
         <h1> THANK YOU FOR YOUR ORDER!</h1>
     </div>
   )

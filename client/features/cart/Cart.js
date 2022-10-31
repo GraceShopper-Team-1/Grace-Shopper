@@ -1,9 +1,10 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link, useParams } from "react-router-dom";
+import { Link, useParams, useNavigate } from "react-router-dom";
 import { fetchCart, removeFromCart } from "./cartSlice";
 
 function Cart() {
+	const navigate = useNavigate()
 	const dispatch = useDispatch();
 	const cart = useSelector((state) => state.cart.cart);
 	console.log("THIS IS CART IN JSX", cart);
@@ -12,6 +13,10 @@ function Cart() {
 	const handleRemoveFromCart = (id) => {
 		dispatch(removeFromCart(id));
 	};
+
+	const handleCheckout = (cart) => {
+		navigate('/success')
+	}
 
 	useEffect(() => {
 		dispatch(fetchCart(userId));
