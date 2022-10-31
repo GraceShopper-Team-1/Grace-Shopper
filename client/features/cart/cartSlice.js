@@ -17,9 +17,12 @@ export const addToCart = createAsyncThunk(
       coverImageUrl,
       price,
       id,
+      // purchaseQuantity: purchaseQuantity == null ? purchaseQuantity = : purchaseQuantity = 1,
       productId: id,
       orderId: 1,
     });
+
+  data.purchaseQuantity != null ? data.purchaseQuantity++ : data.purchaseQuantity = 1
     console.log("data", data);
     return data;
   }
@@ -55,9 +58,7 @@ const cartSlice = createSlice({
         );
         if (itemInCart) {
           itemInCart.purchaseQuantity++;
-        } else {
-          state.cart.push({ ...action.payload, purchaseQuantity: 1 });
-        }
+        } 
       })
       .addCase(removeFromCart.fulfilled, (state, action) => {
         state.cart = state.cart.filter((cart) => cart.id !== action.payload);

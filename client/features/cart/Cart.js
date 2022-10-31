@@ -27,8 +27,9 @@ function Cart() {
 								alt="Cover Image"
 								className="product-img"
 							/>
+						<h3>Order details:</h3>
 							<h3>{cartItem.title}</h3>
-							<h5>{cartItem.author}</h5>
+							<h5>By: {cartItem.author}</h5>
 							<p>${cartItem.price}</p>
 							<p>Quantity: {cartItem.purchaseQuantity}</p>
 						</Link>
@@ -42,7 +43,6 @@ function Cart() {
 				))}
 			</div>
 			<div>
-				<h3>Order details:</h3>
 				<button type="submit">Checkout</button>
 			</div>
 		</div>

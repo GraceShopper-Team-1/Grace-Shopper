@@ -23,9 +23,9 @@ function SingleProduct() {
           <h2>{product.title}</h2> by {product.author}
       </div>
       <div>
-          <p>{product.description}</p>
+          <p className="product-description">{product.description}</p>
         <h2>${product.price}</h2>
-        <p>{product.isbn}</p>
+        <p>ISBN: {product.isbn}</p>
       </div>
       <div>
         <button type="submit">Add to cart</button>

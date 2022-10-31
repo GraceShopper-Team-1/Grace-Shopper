@@ -154,3 +154,7 @@ input{
   border: none;
 
 }
+
+.product-description {
+  padding: 1rem;
+}

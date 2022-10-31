@@ -3,9 +3,10 @@ const db = require("../db");
 
 const Order = db.define("order", {
   userId: Sequelize.INTEGER,
-  status: Sequelize.ENUM({
-    values: ["fulfilled", "unfulfilled"],
-  }),
+  status: {
+    type: Sequelize.ENUM("unfulfilled", "fulfilled"),
+    defaultValue: "unfulfilled"
+   },
 });
 
 module.exports = Order;
