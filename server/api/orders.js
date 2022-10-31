@@ -59,13 +59,3 @@ router.post("/", async (req, res, next) => {
 // 	}
 // });
 
-// // DELETE /api/authors/:authorId
-// router.delete("/:authorId", async (req, res, next) => {
-// 	try {
-// 		const author = await Order.findByPk(req.params.authorId)
-// 		await author.destroy();
-// 		res.sendStatus(204);
-// 	} catch (error) {
-// 		next(error);
-// 	}
-// });
