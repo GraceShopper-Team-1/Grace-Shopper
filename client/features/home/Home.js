@@ -6,7 +6,7 @@ import Row from "./Row";
 /**
  * COMPONENT
  */
-const Home = (props) => {
+const Home = () => {
 	// const username = useSelector((state) => state.auth.me.username);
 
 	return (

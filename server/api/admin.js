@@ -1,6 +1,15 @@
-const checkForAdmin = (req, res, next) => {
-	const currentUser = req.user;
-	if (currentUser && currentUser.isAdmin) {
+const express = require("express");
+// const jwt = require("jsonwebtoken");
+const {
+	models: { User },
+} = require("../db");
+
+const checkForAdmin = async (req, res, next) => {
+    const token = req.headers.authorization;
+	const currentUser = await User.findByToken(token);
+    req.user = currentUser;
+	if (currentUser.dataValues.isAdmin) {
+		console.log("Access granted!");
 		next();
 	} else {
 		const error = new Error("<h3>Access denied.<h3>");

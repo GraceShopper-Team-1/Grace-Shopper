@@ -96,6 +96,7 @@ async function seed() {
 	// test order data
 	const orders = await Promise.all([
 		Order.create({ userId: 1, status: "unfulfilled" }),
+		Order.create({ userId: 2, status: "unfulfilled" }),
 	]);
 
 	console.log(`seeded ${users.length} users`);
@@ -107,6 +108,7 @@ async function seed() {
 		},
 		orders: {
 			order1: orders[0],
+			order2: orders[1],
 		},
 	};
 }
