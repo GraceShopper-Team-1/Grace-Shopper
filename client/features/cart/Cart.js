@@ -2,12 +2,14 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useParams, useNavigate } from "react-router-dom";
 import { fetchCart, removeFromCart } from "./cartSlice";
+import OrderSuccess from "../orderSuccess/OrderSuccess";
+import { Route, Routes } from "react-router-dom";
 
 function Cart() {
 	const navigate = useNavigate()
 	const dispatch = useDispatch();
 	const cart = useSelector((state) => state.cart.cart);
-	console.log("THIS IS CART IN JSX", cart);
+	// console.log("THIS IS CART IN JSX", cart);
 	const userId = useSelector((state) => state.auth.me.id);
 
 	const handleRemoveFromCart = (id) => {
@@ -15,7 +17,8 @@ function Cart() {
 	};
 
 	const handleCheckout = (cart) => {
-		navigate('/success')
+		console.log( "cart submit button clicked")
+		navigate('/cart/success')
 	}
 
 	useEffect(() => {
@@ -54,10 +57,11 @@ function Cart() {
 				)}
 			</div>
 			<div>
-				<button type="submit">Checkout</button>
+				<button type="submit" onClick={handleCheckout}>Checkout</button>
 			</div>
 		</div>
 	);
 }
+
 
 export default Cart;

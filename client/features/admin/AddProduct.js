@@ -47,11 +47,15 @@ const AddProduct = () => {
 				/>
 				<label htmlFor="price">Price:</label>
 				<input
+					
 					type="text"
 					name="price"
 					value={price}
 					onChange={(event) => setPrice(event.target.value)}
 				/>
+				<br/>
+				<br/>
+			
 				<Link to="/admin/products">
 					<button type="submit">Submit</button>
 				</Link>

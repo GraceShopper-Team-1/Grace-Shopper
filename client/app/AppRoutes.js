@@ -50,7 +50,7 @@ const AppRoutes = () => {
           ></Route>
           <Route path="/admin/users" element={"users dashboard!"}></Route>
           <Route path="/orders" element={"orders!"}></Route>
-          <Route path="/success" element={<OrderSuccess />} />
+          <Route path="/cart/success" element={<OrderSuccess />} />
           <Route path="/*" element={<NotFoundPage />}> </Route>
         </Routes>
       ) : isLoggedIn ? (
@@ -59,7 +59,8 @@ const AppRoutes = () => {
           <Route path="/home" element={<Home />} />
           <Route path="/products" element={<AllProducts />} />
           <Route path="/products/:productId" element={<SingleProduct />} />
-          <Route path="/cart" element={<Cart />} />
+          <Route path="/cart/" element={<Cart />} />
+          <Route path="/cart/success" element={<OrderSuccess />} />
           <Route path="/*" element={<NotFoundPage />} />
         </Routes>
       ) : (
@@ -77,6 +78,7 @@ const AppRoutes = () => {
           <Route path="/products" element={<AllProducts />} />
           <Route path="/products/:productId" element={<SingleProduct />} />
           <Route path="/cart" element={<Cart />} />
+          <Route path="/cart/success" element={<OrderSuccess />} />
           <Route path="/*" element={<NotFoundPage />} />
         </Routes>
       )}
