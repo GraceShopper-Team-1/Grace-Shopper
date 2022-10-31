@@ -7,18 +7,11 @@ module.exports = router;
 // GET api/cart -- get all items in cart, should be /:userId, status: "unfulfilled"
 router.get("/:userId", async (req, res, next) => {
 	try {
-		const cart = await Order.findOrCreate({
+		let cart = await Order.findOrCreate({
 			where: { userId: req.params.userId, status: "unfulfilled" },
 			include: Product,
 		});
-		// if (!cart) {
-		// 	const cart = await Order.create({
-		// 		where: { userId: req.params.userId, status: "unfulfilled" },
-		// 		include: Product,
-		// 	});
-		// }
-		// const cartProducts = cart.products;
-		// console.log("cartProducts", cartProducts);
+		cart = cart[0].products;
 		res.json(cart);
 	} catch (error) {
 		console.log(error);
