@@ -1,11 +1,15 @@
+const jwt = require("jsonwebtoken");
 const {
 	models: { User },
 } = require("../db");
 
 const checkForAdmin = async (req, res, next) => {
-	// const currentUser = await User.findByToken(req.headers.authorization);
-	// console.log("currentUser", currentUser);
-	const currentUser = req.user;
+	// const token = window.localStorage.getItem("token");
+	// const currentUser = await User.findByToken(token);
+	const currentUser = await User.findByToken(req.headers.authorization);
+	console.log("currentUser", currentUser);
+	// const currentUser = User.findByPk(req.body.id)
+	// const currentUser = req.user;
 	if (currentUser && currentUser.isAdmin) {
 		console.log("checkForAdmin success!");
 		next();

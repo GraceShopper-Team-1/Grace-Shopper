@@ -50,14 +50,14 @@ User.findByToken = async function (token) {
 	try {
 		const { id } = await jwt.verify(token, process.env.JWT);
 		console.log("THIS IS ID IN FINDBYTOKEN", id);
-		// const user = User.findByPk(id);
-		const user = User.findByPk(id);
+		const user = await User.findByPk(id); // await?
 		console.log("THIS IS user IN FINDBYTOKEN", user);
 		if (!user) {
 			throw "nooo";
 		}
 		return user;
 	} catch (ex) {
+		console.log("ex", ex);
 		const error = Error("bad token");
 		error.status = 401;
 		throw error;
