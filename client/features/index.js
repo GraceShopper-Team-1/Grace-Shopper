@@ -7,3 +7,5 @@ export { default as Navbar } from "./navbar/Navbar";
 export { default as ProductsDashboard } from "./admin/ProductsDashboard";
 export { default as AddProduct } from "./admin/AddProduct";
 export { default as EditProduct } from "./admin/EditProduct";
+export {default as OrderSuccess } from './orderSuccess/OrderSuccess'
+export {default as NotFoundPage } from './notFoundPage/NotFound'

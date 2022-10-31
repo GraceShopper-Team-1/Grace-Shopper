@@ -158,3 +158,8 @@ input{
 .product-description {
   padding: 1rem;
 }
+
+.not-found-img {
+  height: 400px;
+  padding: 20px;
+}

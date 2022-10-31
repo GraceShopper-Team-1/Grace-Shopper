@@ -48,14 +48,14 @@ router.post("/", async (req, res, next) => {
 // ****** Order Products ******
 
 // PUT /api/orders/:orderId
-// router.put("/:orderId", async (req, res, next) => {
-// 	try {
-// 		const order = await Order.findByPk(req.params.orderId, {
-// 			include: [orderProducts]
-// 		});
-// 		res.json(await order.update({orderProducts}));
-// 	} catch (error) {
-// 		next(error);
-// 	}
-// });
+router.put("/:orderId", async (req, res, next) => {
+	try {
+		const order = await Order.findByPk(req.params.orderId, {
+			include: [orderProducts]
+		});
+		// res.json(await order.update({order.status: 'fulfilled'});
+	} catch (error) {
+		next(error);
+	}
+});
 

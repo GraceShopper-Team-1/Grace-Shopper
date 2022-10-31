@@ -19,6 +19,12 @@ router.get("/:userId", async (req, res, next) => {
 	}
 });
 
+
+
+
+
+
+
 // old GET
 // router.get("/", async (req, res, next) => {
 // 	try {
@@ -45,6 +51,12 @@ router.get("/:userId", async (req, res, next) => {
 // 		next(error);
 // 	}
 // });
+
+
+
+
+
+
 
 // isAdminOrUser
 router.put("/:userId", async (req, res, next) => {
