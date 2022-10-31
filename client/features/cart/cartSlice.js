@@ -19,6 +19,7 @@ export const addToCart = createAsyncThunk(
 			// price,
 			// id,
 			productId,
+			// purchaseQuantity,,
 			// orderId: 1,
 		});
 		console.log("data", data);

@@ -53,8 +53,7 @@ router.put("/:userId", async (req, res, next) => {
 			where: { userId: req.params.userId, status: "unfulfilled" },
 			include: { model: Product, as: OrderProduct },
 		});
-		// console.log("currentOrder", currentOrder);
-		// console.log("req.body", req.body);
+		// { productId } = req.body; // purchaseQuantity?
 		const orderProduct = await OrderProduct.findOrCreate({
 			where: { orderId: currentOrder.id, productId: req.body.productId },
 			// include: { model: Product }, // need to do new association for this
