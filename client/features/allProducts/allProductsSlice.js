@@ -1,6 +1,8 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
+const token = window.localStorage.getItem("token");
+
 export const fetchAllProducts = createAsyncThunk(
 	"products/fetchAll",
 	async () => {
@@ -11,8 +13,12 @@ export const fetchAllProducts = createAsyncThunk(
 
 export const addProduct = createAsyncThunk(
 	"products/add",
-	async () => {
-		const { data } = await axios.post(`/api/products`);
+	async ({ title, author, coverImageUrl, price }) => {
+		const { data } = await axios.post(
+			"/api/products",
+			{ title, author, coverImageUrl, price },
+			{ headers: { authorization: token } }
+		);
 		return data;
 	}
 );
@@ -20,7 +26,9 @@ export const addProduct = createAsyncThunk(
 export const deleteProduct = createAsyncThunk(
 	"products/delete",
 	async (productId) => {
-		const { data } = await axios.delete(`/api/products/${productId}`);
+		const { data } = await axios.delete(`/api/products/${productId}`, {
+			headers: { authorization: token },
+		});
 		return data;
 	}
 );

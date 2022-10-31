@@ -1,6 +1,8 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
+const token = window.localStorage.getItem("token");
+
 export const fetchSingleProduct = createAsyncThunk(
 	"product/fetch",
 	async (productId) => {
@@ -17,7 +19,7 @@ export const editProduct = createAsyncThunk(
 			author,
 			coverImageUrl,
 			price,
-		});
+		}, { headers: { authorization: token }});
 		return data;
 	}
 );

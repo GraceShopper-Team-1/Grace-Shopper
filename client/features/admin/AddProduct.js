@@ -51,7 +51,9 @@ const AddProduct = () => {
 					value={price}
 					onChange={(event) => setPrice(event.target.value)}
 				/>
-				<button type="submit">Submit</button>
+				<Link to="/admin/products">
+					<button type="submit">Submit</button>
+				</Link>
 			</form>
 		</div>
 	);
