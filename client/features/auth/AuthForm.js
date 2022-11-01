@@ -32,7 +32,7 @@ const AuthForm = ({ name, displayName }) => {
 			<form onSubmit={handleSubmit} name={name}>
 				<div className="username">
 					<label htmlFor="username">
-						<small>Username</small>
+						<small>Username*</small>
 					</label>
 					<input name="username" required="required" type="text" />
 				</div>
@@ -46,7 +46,7 @@ const AuthForm = ({ name, displayName }) => {
 
 				<div className="password">
 					<label htmlFor="password">
-						<small className="pass">Password</small>
+						<small className="pass">Password*</small>
 					</label>
 					<input name="password" required="required" type="password" />
 				</div>

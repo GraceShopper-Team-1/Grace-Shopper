@@ -1,7 +1,8 @@
 * {
-  box-sizing: border-box;
-  text-align: center;
+  box-sizing: border-box; 
+   text-align: center;
 }
+
 
 body {
   font-family: "Arvo", serif, sans-serif;
@@ -30,7 +31,8 @@ label {
   justify-content: center;
 }
 
-.navbar a, button {
+.navbar a,
+button {
   flex: row;
 }
 
@@ -38,7 +40,8 @@ li {
   list-style: none;
 }
 
-nav a, nav h4 {
+nav a,
+nav h4 {
   display: inline-block;
   margin: 1em;
 }
@@ -48,6 +51,50 @@ form div {
   display: inline-block;
 }
 
+.rowBooks {
+  overflow-x: scroll;
+  display: flex;
+  overflow-y: hidden;
+  
+}
+.rowBooks::-webkit-scrollbar{
+  display: none;
+}
+
+.row-container{
+  
+  max-height: 800px;
+  margin-left: 20px;
+}
+
+
+.row-img{
+  width: fit-content;
+  border: 15px;
+padding: 15px;
+ height: 300px;
+ display: flex;
+ 
+}
+
+.row-img-large {
+  padding: 10px;
+  height: 400px;
+  width: auto;
+}
+
+.row-img-large:hover {
+  transition: 900ms ease-in-out;
+  transform: scale(1.15);
+  opacity: 0.7;
+
+}
+
+.row-img:hover {
+  transition: 250ms ease;
+  transform: scale(1.15);
+  opacity: 0.7;
+}
 /* maybe all-products */
 .column-container {
   display: flex;
@@ -63,7 +110,7 @@ form div {
 }
 
 .product-img {
-  object-fit: fill;
+  /* object-fit: fill; */
   height: 250px;
   width: 165px;
   border-radius: 4px;
@@ -94,8 +141,8 @@ button {
   padding: 0 10px;
   text-align: center;
   font-weight: 600;
-  letter-spacing: .05rem;
-  background:rgb(80, 80, 187);
+  letter-spacing: 0.05rem;
+  background: rgb(80, 80, 187);
   color: white;
   border-radius: 4px;
   border: 0px solid gray;
@@ -109,7 +156,7 @@ button:hover {
 #banner {
   position: relative;
   height: 445px;
-    object-fit: contain;
+  object-fit: contain;
 }
 
 #banner:hover {
@@ -142,16 +189,15 @@ span {
   margin: none;
 }
 
-label{
+label {
   margin-bottom: 10px;
   font-weight: bold;
 }
 
-input{
+input {
   height: 25px;
- border-radius: 5px; 
+  border-radius: 5px;
   border: none;
-
 }
 
 .product-description {
@@ -163,16 +209,15 @@ input{
   padding: 20px;
 }
 
-
-.cart-div{
-flex-direction: row;
+.cart-div {
+  flex-direction: row;
   margin-left: auto;
   padding: 20px;
 }
 
 .cart-img {
- max-height: 250px;
- text-align: left;
+  max-height: 250px;
+  text-align: left;
 }
 
 .cart-title {
@@ -181,7 +226,8 @@ flex-direction: row;
 }
 
 .cart-author {
-  font-size: .7rem;
+  font-size: 0.7rem;
+
   text-align: right;
 }
 
@@ -193,10 +239,6 @@ flex-direction: row;
 .cart-quantity {
   font-size: 0.8 rem;
   text-align: right;
-}
-
-.content {
- 
 }
 
 .admin-btn {
