@@ -23,6 +23,7 @@ router.get("/:userId", async (req, res, next) => {
 // create or edit cart
 router.put("/edit/:userId", async (req, res, next) => {
 	try {
+		console.log("req.body", req.body);
 		let currentOrder = await Order.findOrCreate({
 			where: { userId: req.params.userId, status: "unfulfilled" },
 			include: { model: Product, as: OrderProduct },
@@ -33,11 +34,9 @@ router.put("/edit/:userId", async (req, res, next) => {
 		});
 		if (!orderProduct) {
 			orderProduct = await OrderProduct.create({
-				where: {
-					orderId: currentOrder.id,
-					productId: req.body.productId,
-					quantity: 1,
-				},
+				orderId: currentOrder.id,
+				productId: req.body.productId,
+				quantity: 1,
 			});
 			console.log("new orderproduct", orderProduct);
 			res.json(orderProduct);

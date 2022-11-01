@@ -9,14 +9,15 @@ function Cart() {
 	const navigate = useNavigate();
 	const dispatch = useDispatch();
 	const cart = useSelector((state) => state.cart.cart);
-	const userId = useSelector((state) => state.auth.me.id) || null;
+	console.log('THIS IS CART IN CART.JS', cart)
+	const userId = useSelector((state) => state.auth.me.id);
 
 	const handleRemoveFromCart = (id) => {
 		dispatch(removeFromCart(id));
 	};
 
 	const handleCheckout = (userId) => {
-		dispatch(checkoutCart(userId))
+		dispatch(checkoutCart(userId));
 		console.log("cart submit button clicked");
 		navigate("/cart/success");
 	};
@@ -42,7 +43,7 @@ function Cart() {
 								<h3>{cartItem.title}</h3>
 								<h5>By: {cartItem.author}</h5>
 								<p>${cartItem.price}</p>
-								<p>Quantity: {cartItem.quantity}</p>
+								<p>Quantity: {cartItem?.order_product?.quantity}</p>
 							</Link>
 							<button
 								type="button"
