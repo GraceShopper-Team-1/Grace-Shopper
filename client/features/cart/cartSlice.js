@@ -6,21 +6,13 @@ export const fetchCart = createAsyncThunk("cart/fetchAll", async (userId) => {
 	return data;
 });
 
-// return Product?
-// updating order_products db, testing with orderId 1
 export const addToCart = createAsyncThunk(
 	"cart/add",
 	async ({ userId, productId }) => {
 		console.log("this is userId and productId in slice", userId, productId);
 		const { data } = await axios.put(`/api/cart/${userId}`, {
-			// title,
-			// author,
-			// coverImageUrl,
-			// price,
-			// id,
 			productId,
-			// purchaseQuantity,,
-			// orderId: 1,
+			// purchaseQuantity,
 		});
 		console.log("data", data);
 		return data;
@@ -43,7 +35,6 @@ const initialState = {
 };
 
 const cartSlice = createSlice({
-
 	name: "cart",
 	initialState,
 	reducers: {},

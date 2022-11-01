@@ -13,9 +13,6 @@ function OrderSuccess() {
     dispatch(fetchCart(userId));
   }, [dispatch]);
 
-
-
-  
   console.log(cart, "****CART78878 ORDER****");
   return (
     <div>
@@ -23,7 +20,7 @@ function OrderSuccess() {
       <h3>Items In Your Order:</h3>
 
       {cart.map((item) => (
-        <div  className="cart-div">
+        <div className="cart-div">
           <li key={item.id}>
             <img style={{display:'flex'}} className="cart-img" src={item.coverImageUrl} alt='Book Image'/>
             <div className="content">
