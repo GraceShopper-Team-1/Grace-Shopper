@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { addProduct } from "../allProducts/allProductsSlice";
+import { addProduct } from "../../allProducts/allProductsSlice";
 
 const AddProduct = () => {
 	const [title, setTitle] = useState("");
@@ -47,15 +47,14 @@ const AddProduct = () => {
 				/>
 				<label htmlFor="price">Price:</label>
 				<input
-					
 					type="text"
 					name="price"
 					value={price}
 					onChange={(event) => setPrice(event.target.value)}
 				/>
-				<br/>
-				<br/>
-			
+				<br />
+				<br />
+
 				<Link to="/admin/products">
 					<button type="submit">Submit</button>
 				</Link>

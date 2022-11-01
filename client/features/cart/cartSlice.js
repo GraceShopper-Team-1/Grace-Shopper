@@ -13,7 +13,6 @@ export const addToCart = createAsyncThunk(
 			productId,
 			// quantity,
 		});
-		// console.log("data", data);
 		return data;
 	}
 );

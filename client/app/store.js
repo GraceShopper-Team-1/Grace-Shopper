@@ -3,8 +3,8 @@ import authReducer from "../features/auth/authSlice";
 import allProductsReducer from "../features/allProducts/allProductsSlice";
 import singleProductReducer from "../features/singleProduct/singleProductSlice";
 import cartReducer from "../features/cart/cartSlice";
-import userReducer from "../features/admin/usersSlice";
-import ordersReducer from "../features/admin/ordersSlice";
+import userReducer from "../features/admin/users/usersSlice";
+import ordersReducer from "../features/admin/orders/ordersSlice";
 
 const store = configureStore({
 	reducer: {

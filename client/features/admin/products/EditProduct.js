@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { editProduct } from "../singleProduct/singleProductSlice";
-import SingleProduct from "../singleProduct/SingleProduct";
+import { editProduct } from "../../singleProduct/singleProductSlice";
+import SingleProduct from "../../singleProduct/SingleProduct";
 import { useParams } from "react-router-dom";
 
 const EditProduct = () => {

@@ -1,5 +1,4 @@
 const express = require("express");
-// const jwt = require("jsonwebtoken");
 const {
 	models: { User },
 } = require("../db");
