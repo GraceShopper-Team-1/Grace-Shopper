@@ -9,12 +9,11 @@ export const fetchCart = createAsyncThunk("cart/fetchAll", async (userId) => {
 export const addToCart = createAsyncThunk(
 	"cart/add",
 	async ({ userId, productId }) => {
-		console.log("this is userId and productId in slice", userId, productId);
-		const { data } = await axios.put(`/api/cart/${userId}`, {
+		const { data } = await axios.put(`/api/cart/edit/${userId}`, {
 			productId,
-			// purchaseQuantity,
+			// quantity,
 		});
-		console.log("data", data);
+		// console.log("data", data);
 		return data;
 	}
 );
@@ -22,6 +21,11 @@ export const addToCart = createAsyncThunk(
 export const removeFromCart = createAsyncThunk("removeFromCart", async (id) => {
 	const { data } = await axios.delete(`/api/cart/${id}`);
 	return id;
+});
+
+export const checkoutCart = createAsyncThunk("checkoutCart", async (userId) => {
+	const { data } = await axios.put("/api/cart/success", { userId });
+	return data;
 });
 
 // export const updateCart = createAsyncThunk("cart/update", async (productId) => {
@@ -32,6 +36,7 @@ export const removeFromCart = createAsyncThunk("removeFromCart", async (id) => {
 
 const initialState = {
 	cart: [],
+	paidCart: [],
 };
 
 const cartSlice = createSlice({
@@ -48,21 +53,25 @@ const cartSlice = createSlice({
 					(item) => item.productId === action.payload.productId
 				);
 				if (cartItem) {
-					cartItem.purchaseQuantity++;
+					cartItem.quantity++;
 				} else {
-					state.cart.push({ ...action.payload, purchaseQuantity: 1 });
+					state.cart.push({ ...action.payload, quantity: 1 });
 				}
 			})
 			.addCase(removeFromCart.fulfilled, (state, action) => {
 				state.cart = state.cart.filter((cart) => cart.id !== action.payload);
+			})
+			.addCase(checkoutCart.fulfilled, (state, action) => {
+				state.paidCart = state.cart;
+				state.cart = [];
 			});
-		// .addCase(updateCart.fulfilled, (state, action) => {
-		// 	const itemInCart = state.cart.find(
-		// 		(item) => item.id === action.payload.id
-		// 	);
-		// 	itemInCart.purchaseQuantity++;
-		// });
 	},
 });
+// .addCase(updateCart.fulfilled, (state, action) => {
+// 	const itemInCart = state.cart.find(
+// 		(item) => item.id === action.payload.id
+// 	);
+// 	itemInCart.quantity++;
+// });
 
 export default cartSlice.reducer;

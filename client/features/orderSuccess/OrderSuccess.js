@@ -6,7 +6,7 @@ import { useEffect } from "react";
 
 function OrderSuccess() {
   const dispatch = useDispatch();
-  const cart = useSelector((state) => state.cart.cart);
+  const cart = useSelector((state) => state.cart.paidCart);
   const userId = useSelector((state) => state.auth.me.id);
 
   useEffect(() => {
