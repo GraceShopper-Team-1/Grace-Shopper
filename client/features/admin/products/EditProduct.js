@@ -10,7 +10,7 @@ const EditProduct = () => {
 	const [coverImageUrl, setCoverImageUrl] = useState("");
 	const [price, setPrice] = useState(0);
 	const { productId } = useParams();
-	console.log("THIS IS PRODUCTID IN EDITPRODUCT", productId);
+	
 
 	const dispatch = useDispatch();
 

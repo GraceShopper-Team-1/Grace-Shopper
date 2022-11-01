@@ -5,18 +5,25 @@ import { fetchAllProducts } from "./allProductsSlice";
 import { addToCart } from "../cart/cartSlice";
 
 function AllProducts() {
-	const dispatch = useDispatch();
-	const products = useSelector((state) => state.allProducts.products);
-	const userId = useSelector((state) => state.auth.me.id);
-	console.log("userId", userId);
+  const dispatch = useDispatch();
+  const products = useSelector((state) => state.allProducts.products);
+  const userId = useSelector((state) => state.auth.me.id);
+  const isLoggedIn = useSelector((state) => !!state.auth.me.id);
+ 
 
   useEffect(() => {
     dispatch(fetchAllProducts());
   }, [dispatch]);
 
   const handleAddToCart = (productId) => {
-    console.log("this is inside the event handler", userId, productId);
+   
     dispatch(addToCart({ productId }));
+  };
+  let productArr = [];
+  const handleGuestCart = (product) => {
+    productArr.push(product);
+    
+    localStorage.setItem("guest", JSON.stringify(productArr));
   };
 
   return (
@@ -35,7 +42,14 @@ function AllProducts() {
               <h5>{product.author}</h5>
               <p>${product.price}</p>
             </Link>
-            <button type="button" onClick={() => handleAddToCart(product.id)}>
+            <button
+              type="button"
+              onClick={() => {
+                isLoggedIn
+                  ? handleAddToCart(product.id)
+                  : handleGuestCart(product);
+              }}
+            >
               Add to cart
             </button>
           </li>

@@ -9,7 +9,7 @@ export const getUsers = createAsyncThunk("getUsers", async () => {
   const { data } = await axios.get("/api/users", {
     headers: { authorization: token },
   });
-  console.log(data);
+ 
   return data;
 });
 
