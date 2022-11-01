@@ -14,7 +14,9 @@ export const getUsers = createAsyncThunk("getUsers", async () => {
 });
 
 export const getSingleUser = createAsyncThunk("getSingleUser", async (id) => {
-  const { data } = await axios.get(`/api/users/${id}`);
+  const { data } = await axios.get(`/api/users/${id}`, {
+		headers: { authorization: token },
+	});
   return data;
 });
 

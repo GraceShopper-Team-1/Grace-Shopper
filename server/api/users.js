@@ -21,10 +21,10 @@ router.get("/", checkForAdmin, async (req, res, next) => {
 });
 
 // GET api/users/:userId
-router.get("/:userId", async (req, res, next) => {
+router.get("/:userId", checkForAdmin, async (req, res, next) => {
   try {
     const user = await User.findByPk(req.params.userId, {
-      attributes: ["id", "username"],
+      attributes: ["id", "username", "email"],
     });
     res.json(user);
   } catch (err) {
