@@ -14,10 +14,9 @@ function Cart() {
 
   localStorage.getItem("guest");
   const books = JSON.parse(localStorage.getItem("guest"));
-
+  
   const handleCheckout = (userId) => {
     dispatch(checkoutCart(userId));
-   
     navigate("/cart/success");
   };
 
@@ -55,7 +54,7 @@ function Cart() {
                   <h3>{cartItem.title}</h3>
                   <h5>By: {cartItem.author}</h5>
                   <p>${cartItem.price}</p>
-                  <p>Quantity: {cartItem.quantity}</p>
+                  <p>Quantity: {cartItem?.order_product?.quantity}</p>
                 </Link>
                 <button
                   type="button"
@@ -83,7 +82,7 @@ function Cart() {
                 <h3>{book.title}</h3>
                 <h5>By: {book.author}</h5>
                 <p>${book.price}</p>
-                <p>Quantity: {book.quantity}</p>
+                <p>Quantity: {book?.order_product?.quantity}</p>
               </Link>
               <button
                 type="button"

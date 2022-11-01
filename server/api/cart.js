@@ -23,25 +23,41 @@ router.get("/", async (req, res, next) => {
 });
 
 // isAdminOrUser
-router.put("/edit/", async (req, res, next) => {
-  const token = req.headers.authorization;
-  const user = await User.findByToken(token);
-  if (user) {
-    try {
+// create or edit cart
+router.put("/edit", async (req, res, next) => {
+	try {
+    const token = req.headers.authorization;
+    const user = await User.findByToken(token);
+    if (user) {
       let currentOrder = await Order.findOrCreate({
         where: { userId: user.id, status: "unfulfilled" },
         include: { model: Product, as: OrderProduct },
       });
       currentOrder = currentOrder[0];
-      const orderProduct = await OrderProduct.findOrCreate({
+      let orderProduct = await OrderProduct.findOne({
         where: { orderId: currentOrder.id, productId: req.body.productId },
       });
-      res.json(orderProduct[0]);
-    } catch (error) {
-     
-      next(error);
+      if (!orderProduct) {
+        orderProduct = await OrderProduct.create({
+          orderId: currentOrder.id,
+          productId: req.body.productId,
+          quantity: 1,
+        });
+        console.log("new orderproduct", orderProduct);
+        res.json(orderProduct);
+      } else {
+        let quantity = orderProduct.quantity + 1;
+        await orderProduct.update({ quantity });
+        console.log("updated orderproduct", orderProduct);
+        res.json(orderProduct);
+      }
+    } else {
+      console.log("Can't edit cart!");
     }
-  }
+	} catch (error) {
+		console.log(error);
+		next(error);
+	}
 });
 
 // DELETE /api/cart/:cartId -- remove item from cart

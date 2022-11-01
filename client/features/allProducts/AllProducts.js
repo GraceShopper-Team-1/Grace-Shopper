@@ -9,7 +9,6 @@ function AllProducts() {
   const products = useSelector((state) => state.allProducts.products);
   const userId = useSelector((state) => state.auth.me.id);
   const isLoggedIn = useSelector((state) => !!state.auth.me.id);
- 
 
   useEffect(() => {
     dispatch(fetchAllProducts());
