@@ -13,7 +13,7 @@ function OrderSuccess() {
     dispatch(fetchCart(userId));
   }, [dispatch]);
 
-  console.log(cart, "****CART78878 ORDER****");
+ 
   return (
     <div>
       <h1> THANK YOU FOR YOUR ORDER!</h1>

@@ -7,16 +7,20 @@ module.exports = router;
 
 // GET api/users
 router.get("/", checkForAdmin, async (req, res, next) => {
-  try {
-    const users = await User.findAll({
-      // explicitly select only the id and username fields - even though
-      // users' passwords are encrypted, it won't help if we just
-      // send everything to anyone who asks!
-      attributes: ["id", "username", "email"],
-    });
-    res.json(users);
-  } catch (err) {
-    next(err);
+  
+  const user = req.user;
+  if (user.dataValues.isAdmin === true) {
+    try {
+      const users = await User.findAll({
+        // explicitly select only the id and username fields - even though
+        // users' passwords are encrypted, it won't help if we just
+        // send everything to anyone who asks!
+        attributes: ["id", "username", "email"],
+      });
+      res.json(users);
+    } catch (err) {
+      next(err);
+    }
   }
 });
 

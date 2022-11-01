@@ -7,7 +7,7 @@ export const fetchOrders = createAsyncThunk("orders/fetchAll", async () => {
 	const { data } = await axios.get("/api/orders", {
 		headers: { authorization: token },
 	});
-	console.log(data);
+	
 	return data;
 });
 

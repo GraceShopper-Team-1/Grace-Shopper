@@ -28,9 +28,7 @@ router.post("/signup", async (req, res, next) => {
 
 router.get("/me", async (req, res, next) => {
 	try {
-    // console.log("TOKEN IN /ME", req.headers.authorization);
-		// const user = await User.findByToken(req.headers.authorization);
-		// req.user = user;
+   
 		res.send(await User.findByToken(req.headers.authorization));
 	} catch (ex) {
 		next(ex);

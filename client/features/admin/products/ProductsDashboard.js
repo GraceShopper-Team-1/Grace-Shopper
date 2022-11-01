@@ -11,7 +11,7 @@ function ProductsDashboard() {
 	const dispatch = useDispatch();
 	const products = useSelector((state) => state.allProducts.products);
 	const userId = useSelector((state) => state.auth.me.id);
-	console.log("userId", userId);
+	
 
 	useEffect(() => {
 		dispatch(fetchAllProducts());
