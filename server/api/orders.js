@@ -16,35 +16,3 @@ router.get("/", checkForAdmin, async (req, res, next) => {
 		next(err);
 	}
 });
-
-// GET api/orders/:orderId
-router.get("/:orderId", async (req, res, next) => {
-	try {
-		const order = await Order.findByPk(req.params.orderId);
-		res.json(order);
-	} catch (err) {
-		next(err);
-	}
-});
-
-// POST api/orders
-router.post("/", async (req, res, next) => {
-	try {
-		const order = await Order.create(req.body);
-		res.status(201).json(order);
-	} catch (error) {
-		next(error);
-	}
-});
-
-// PUT /api/orders/:orderId
-router.put("/:orderId", async (req, res, next) => {
-	try {
-		const order = await Order.findByPk(req.params.orderId, {
-			include: [OrderProduct],
-		});
-		// res.json(await order.update({order.status: 'fulfilled'});
-	} catch (error) {
-		next(error);
-	}
-});

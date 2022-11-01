@@ -27,12 +27,6 @@ export const checkoutCart = createAsyncThunk("checkoutCart", async (userId) => {
 	return data;
 });
 
-// export const updateCart = createAsyncThunk("cart/update", async (productId) => {
-// 	const { data } = await axios.post("/api/cart", { productId, orderId: 1 }); // updating order_products db, testing with orderId 1
-// 	console.log("data", data);
-// 	return data;
-// });
-
 const initialState = {
 	cart: [],
 	paidCart: [],
@@ -48,14 +42,15 @@ const cartSlice = createSlice({
 				state.cart = action.payload;
 			})
 			.addCase(addToCart.fulfilled, (state, action) => {
-				const cartItem = state.cart.find(
-					(item) => item.productId === action.payload.productId
-				);
-				if (cartItem) {
-					cartItem.quantity++;
-				} else {
-					state.cart.push({ ...action.payload, quantity: 1 });
-				}
+				state.cart.push(action.payload);
+				// const cartItem = state.cart.find(
+				// 	(item) => item.productId === action.payload.productId
+				// );
+				// if (cartItem) {
+				// 	cartItem.quantity++;
+				// } else {
+				// 	state.cart.push({ ...action.payload, quantity: 1 });
+				// }
 			})
 			.addCase(removeFromCart.fulfilled, (state, action) => {
 				state.cart = state.cart.filter((cart) => cart.id !== action.payload);
@@ -66,11 +61,5 @@ const cartSlice = createSlice({
 			});
 	},
 });
-// .addCase(updateCart.fulfilled, (state, action) => {
-// 	const itemInCart = state.cart.find(
-// 		(item) => item.id === action.payload.id
-// 	);
-// 	itemInCart.quantity++;
-// });
 
 export default cartSlice.reducer;

@@ -20,7 +20,7 @@ function OrdersDashboard() {
 					<div key={order.id} className="order">
 						<p>Order ID: {order.id}</p>
 						<p>User: {order.user.username || "Guest"}</p>
-						<div>Products: {order.products.map((book) => (<li>{book.title}</li>))}</div>
+						<div>Products: {order.products.map((book) => (<li key={book.id}>{book.title}</li>))}</div>
 						<p>Status: {order.status}</p>
 						<p>Created at: {order.createdAt}</p>
 					</div>

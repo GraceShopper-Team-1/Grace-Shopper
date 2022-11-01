@@ -30,8 +30,6 @@ router.put("/edit/:userId", async (req, res, next) => {
 		const orderProduct = await OrderProduct.findOrCreate({
 			where: { orderId: currentOrder.id, productId: req.body.productId },
 		});
-		// await currentOrder.update(quantity);
-		// await orderProduct.save();
 		res.json(orderProduct[0]);
 	} catch (error) {
 		console.log(error);

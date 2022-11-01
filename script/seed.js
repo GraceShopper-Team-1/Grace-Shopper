@@ -93,12 +93,6 @@ async function seed() {
 		User.create({ username: "murphy", password: "123", isAdmin: false, email:'murphy@mail.com' }),
 	]);
 
-	// test order data
-	// const orders = await Promise.all([
-	// 	Order.create({ userId: 1, status: "unfulfilled" }),
-	// 	Order.create({ userId: 2, status: "unfulfilled" }),
-	// ]);
-
 	console.log(`seeded ${users.length} users`);
 	console.log(`seeded successfully`);
 	return {
@@ -106,10 +100,6 @@ async function seed() {
 			cody: users[0],
 			murphy: users[1],
 		},
-		// orders: {
-		// 	order1: orders[0],
-		// 	order2: orders[1],
-		// },
 	};
 }
 
