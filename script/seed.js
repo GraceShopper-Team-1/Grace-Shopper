@@ -7,7 +7,7 @@ const {
 const axios = require("axios");
 require("dotenv").config();
 
-const key = process.env.API_KEY;
+const key = "AIzaSyBPi4jWcnylqFsNv_xcztwzeyXlel5uOsI";
 
 async function seed() {
   await db.sync({ force: true });
@@ -87,20 +87,30 @@ async function seed() {
       })
     );
 
-	// Creating Users
-	const users = await Promise.all([
-		User.create({ username: "cody", password: "123", isAdmin: true, email: 'cody@bookworm.com' }),
-		User.create({ username: "murphy", password: "123", isAdmin: false, email:'murphy@mail.com' }),
-	]);
+  // Creating Users
+  const users = await Promise.all([
+    User.create({
+      username: "cody",
+      password: "123",
+      isAdmin: true,
+      email: "cody@bookworm.com",
+    }),
+    User.create({
+      username: "murphy",
+      password: "123",
+      isAdmin: false,
+      email: "murphy@mail.com",
+    }),
+  ]);
 
-	console.log(`seeded ${users.length} users`);
-	console.log(`seeded successfully`);
-	return {
-		users: {
-			cody: users[0],
-			murphy: users[1],
-		},
-	};
+  console.log(`seeded ${users.length} users`);
+  console.log(`seeded successfully`);
+  return {
+    users: {
+      cody: users[0],
+      murphy: users[1],
+    },
+  };
 }
 
 async function runSeed() {
