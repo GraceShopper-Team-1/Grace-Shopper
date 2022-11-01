@@ -14,6 +14,7 @@ function UsersDashboard() {
 	return (
 		<div>
 			<h1>Users Dashboard</h1>
+			{/* o: destructuring is your friend */}
 			{users.map((user) => {
 				return (
 					<li key={user.id}>

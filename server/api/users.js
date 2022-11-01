@@ -23,6 +23,7 @@ router.get("/", checkForAdmin, async (req, res, next) => {
 // GET api/users/:userId
 router.get("/:userId", checkForAdmin, async (req, res, next) => {
 	try {
+		// o: always check for the case when you don't find the resource
 		const user = await User.findByPk(req.params.userId, {
 			attributes: ["id", "username", "email"],
 		});
@@ -33,6 +34,9 @@ router.get("/:userId", checkForAdmin, async (req, res, next) => {
 });
 
 // POST /api/users
+
+// o: this should only be possible as an admin... but also you can make yourself
+// 	an admin here... be careful
 router.post("/", async (req, res, next) => {
 	try {
 		const user = await User.create(req.body);
@@ -45,6 +49,7 @@ router.post("/", async (req, res, next) => {
 // PUT /api/users/:userId
 router.put("/:userId", async (req, res, next) => {
 	try {
+		// o: always check for the case when you don't find the resource
 		const user = await User.findByPk(req.params.userId, {
 			attributes: ["id", "username"],
 		});
@@ -57,6 +62,7 @@ router.put("/:userId", async (req, res, next) => {
 // DELETE /api/users/:userId
 router.delete("/:userId", async (req, res, next) => {
 	try {
+		// o: always check for the case when you don't find the resource
 		const user = await User.findByPk(req.params.userId, {
 			attributes: ["id", "username"],
 		});

@@ -9,6 +9,9 @@ function Cart() {
 	const navigate = useNavigate();
 	const dispatch = useDispatch();
 	const cart = useSelector((state) => state.cart.cart);
+
+	// o: is there an instance where this comes back undefined?... I am wondering
+	// 	when would it set userId to null here 
 	const userId = useSelector((state) => state.auth.me.id) || null;
 
 	const handleRemoveFromCart = (id) => {
@@ -17,6 +20,8 @@ function Cart() {
 
 	const handleCheckout = (userId) => {
 		dispatch(checkoutCart(userId))
+
+		// o: please remove if this component is functional and working as intended
 		console.log("cart submit button clicked");
 		navigate("/cart/success");
 	};

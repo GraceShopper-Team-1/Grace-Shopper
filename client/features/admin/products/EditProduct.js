@@ -10,6 +10,8 @@ const EditProduct = () => {
 	const [coverImageUrl, setCoverImageUrl] = useState("");
 	const [price, setPrice] = useState(0);
 	const { productId } = useParams();
+
+	// o: please remove if this component is functional and working as intended
 	console.log("THIS IS PRODUCTID IN EDITPRODUCT", productId);
 
 	const dispatch = useDispatch();

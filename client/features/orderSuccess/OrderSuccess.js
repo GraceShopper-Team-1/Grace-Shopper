@@ -13,12 +13,14 @@ function OrderSuccess() {
     dispatch(fetchCart(userId));
   }, [dispatch]);
 
+  // o: please remove if this component is functional and working as intended
   console.log(cart, "****CART78878 ORDER****");
   return (
     <div>
       <h1> THANK YOU FOR YOUR ORDER!</h1>
       <h3>Items In Your Order:</h3>
 
+      {/* o: destructuring is your friend */}
       {cart.map((item) => (
         <div className="cart-div">
           <li key={item.id}>

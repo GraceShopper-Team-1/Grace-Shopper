@@ -8,6 +8,8 @@ function AllProducts() {
 	const dispatch = useDispatch();
 	const products = useSelector((state) => state.allProducts.products);
 	const userId = useSelector((state) => state.auth.me.id);
+
+	// o: please remove if this component is functional and working as intended
 	console.log("userId", userId);
 
 	useEffect(() => {
@@ -23,6 +25,7 @@ function AllProducts() {
 		<div id="all-products">
 			<h3>Bestsellers</h3>
 			<div className="column-container">
+				{/* o: destructuring is your friend */}
 				{products.map((product) => (
 					<li key={product.id} className="product-entry">
 						<Link to={`/products/${product.id}`}>

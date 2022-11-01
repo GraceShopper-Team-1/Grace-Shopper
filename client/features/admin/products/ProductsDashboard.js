@@ -11,6 +11,8 @@ function ProductsDashboard() {
 	const dispatch = useDispatch();
 	const products = useSelector((state) => state.allProducts.products);
 	const userId = useSelector((state) => state.auth.me.id);
+
+	// o: please remove if this component is functional and working as intended
 	console.log("userId", userId);
 
 	useEffect(() => {

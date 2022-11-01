@@ -43,6 +43,8 @@ const cartSlice = createSlice({
 			})
 			.addCase(addToCart.fulfilled, (state, action) => {
 				state.cart.push(action.payload);
+
+				// o: remove if not being used
 				// const cartItem = state.cart.find(
 				// 	(item) => item.productId === action.payload.productId
 				// );

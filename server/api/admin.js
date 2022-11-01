@@ -8,6 +8,8 @@ const checkForAdmin = async (req, res, next) => {
 	const currentUser = await User.findByToken(token);
 	console.log(currentUser);
     req.user = currentUser;
+
+	// o: you can just do currentUser.isAdmin
 	if (currentUser.dataValues.isAdmin) {
 		console.log("Access granted!");
 		next();

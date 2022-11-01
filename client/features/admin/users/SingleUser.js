@@ -6,6 +6,7 @@ import { useParams } from "react-router-dom";
 function SingleUser() {
   const dispatch = useDispatch();
   const { id } = useParams();
+  // o: destructuring is your friend
   const user = useSelector((state) => state.user.singleUser);
 
   useEffect(() => {

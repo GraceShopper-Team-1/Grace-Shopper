@@ -15,6 +15,7 @@ function OrdersDashboard() {
 	return (
 		<div>
 			<h1>Orders Dashboard</h1>
+			{/* o: destructuring helps readability */}
 			{orders.map((order) => {
 				return (
 					<div key={order.id} className="order">

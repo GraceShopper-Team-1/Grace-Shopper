@@ -7,6 +7,7 @@ module.exports = router;
 // GET api/cart -- get all items in cart, should be /:userId, status: "unfulfilled"
 router.get("/:userId", async (req, res, next) => {
 	try {
+		// o: you can retrieve userId from req.user... let's chat during SM
 		let cart = await Order.findOrCreate({
 			where: { userId: req.params.userId, status: "unfulfilled" },
 			include: Product,
@@ -40,6 +41,7 @@ router.put("/edit/:userId", async (req, res, next) => {
 // DELETE /api/cart/:cartId -- remove item from cart
 router.delete("/:cartItemId", async (req, res, next) => {
 	try {
+		// o: always check for the case when you don't find the resource
 		const cartItem = await OrderProduct.findByPk(req.params.cartItemId);
 		await cartItem.destroy();
 		res.sendStatus(204);
@@ -51,6 +53,7 @@ router.delete("/:cartItemId", async (req, res, next) => {
 // checkout cart
 router.put("/success", async (req, res, next) => {
 	try {
+		// o: always check for the case when you don't find the resource
 		const currentOrder = await Order.findOne({
 			where: {
 				userId: req.body.userId || null, // guest checkout is null?

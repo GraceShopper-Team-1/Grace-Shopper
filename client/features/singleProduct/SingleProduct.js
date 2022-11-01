@@ -7,6 +7,8 @@ function SingleProduct(props) {
   const dispatch = useDispatch();
   let { productId } = useParams();
   if (!productId) productId = props.productId;
+
+  // o: destructuring is your friend
   const product = useSelector((state) => state.singleProduct);
 
   useEffect(() => {
