@@ -1,5 +1,4 @@
 const express = require("express");
-// const jwt = require("jsonwebtoken");
 const {
 	models: { User },
 } = require("../db");
@@ -7,6 +6,7 @@ const {
 const checkForAdmin = async (req, res, next) => {
     const token = req.headers.authorization;
 	const currentUser = await User.findByToken(token);
+	console.log(currentUser);
     req.user = currentUser;
 	if (currentUser.dataValues.isAdmin) {
 		console.log("Access granted!");

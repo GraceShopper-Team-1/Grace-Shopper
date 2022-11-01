@@ -5,9 +5,7 @@ import { useParams } from "react-router-dom";
 
 function SingleUser() {
   const dispatch = useDispatch();
-
   const { id } = useParams();
-
   const user = useSelector((state) => state.user.singleUser);
 
   useEffect(() => {
@@ -18,6 +16,7 @@ function SingleUser() {
     <div>
       <div>
         <h1>{user.username}</h1>
+        <p>{user.email}</p>
       </div>
     </div>
   );
