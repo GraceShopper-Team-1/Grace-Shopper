@@ -5,11 +5,10 @@ import { fetchAllProducts } from "./allProductsSlice";
 import { addToCart } from "../cart/cartSlice";
 
 function AllProducts() {
-  const dispatch = useDispatch();
-  const products = useSelector((state) => state.allProducts.products);
-  const userId = useSelector((state) => state.auth.me.id);
-  // const userId = req.user.id;
-  console.log("userId", userId);
+	const dispatch = useDispatch();
+	const products = useSelector((state) => state.allProducts.products);
+	const userId = useSelector((state) => state.auth.me.id);
+	console.log("userId", userId);
 
   useEffect(() => {
     dispatch(fetchAllProducts());

@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import {
 	fetchAllProducts,
 	deleteProduct,
-} from "../allProducts/allProductsSlice";
+} from "../../allProducts/allProductsSlice";
 import AddProduct from "./AddProduct";
 
 function ProductsDashboard() {
@@ -24,8 +24,13 @@ function ProductsDashboard() {
 	return (
 		<div id="products-dashboard">
 			<Link to={"/admin/products/add"}>
+				<br />
 				<button type="button">Add product</button>
 			</Link>
+			<br />
+			<br />
+			<hr />
+			<br />
 			{products.map((product) => (
 				<li key={product.id} className="admin-entry">
 					<Link to={`/products/${product.id}`}>
@@ -39,11 +44,18 @@ function ProductsDashboard() {
 						<p>${product.price}</p>
 					</Link>
 					<Link to={`/admin/products/${product.id}`}>
-						<button type="button">Edit</button>
+						<button className="admin-btn" type="button">
+							Edit
+						</button>
 					</Link>
-					<button type="button" onClick={() => handleDeleteProduct(product.id)}>
+					<button
+						className="admin-btn"
+						type="button"
+						onClick={() => handleDeleteProduct(product.id)}
+					>
 						Delete
 					</button>
+					<hr />
 				</li>
 			))}
 		</div>
