@@ -1,10 +1,12 @@
 import React from "react";
 import { fetchCart } from "../cart/cartSlice";
-
+import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect } from "react";
 
+
 function OrderSuccess() {
+  const navigate = useNavigate()
   const dispatch = useDispatch();
   const cart = useSelector((state) => state.cart.paidCart);
   const userId = useSelector((state) => state.auth.me.id);
@@ -33,6 +35,7 @@ function OrderSuccess() {
             <h5 className="cart-price">Total: {`${(item.price * item?.order_product.quantity).toFixed(2)}` }</h5></div>
             <hr/> 
           </li>
+          <button onClick={() => navigate("/")}> HOME </button>
         </div>
         ))}
     </div>
