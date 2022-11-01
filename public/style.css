@@ -94,7 +94,7 @@ padding: 15px;
   transform: scale(1.15);
   opacity: 0.7;
 }
-/* maybe all-products */
+
 .column-container {
   display: flex;
   overflow-x: scroll;
@@ -109,7 +109,6 @@ padding: 15px;
 }
 
 .product-img {
-  /* object-fit: fill; */
   height: 250px;
   width: 165px;
   border-radius: 4px;
