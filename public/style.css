@@ -87,16 +87,14 @@ padding: 15px;
   transition: 900ms ease-in-out;
   transform: scale(1.15);
   opacity: 0.7;
-  cursor: pointer;
 }
 
 .row-img:hover {
   transition: 250ms ease;
   transform: scale(1.15);
   opacity: 0.7;
-  cursor: pointer;
 }
-/* maybe all-products */
+
 .column-container {
   display: flex;
   overflow-x: scroll;
@@ -111,7 +109,6 @@ padding: 15px;
 }
 
 .product-img {
-  /* object-fit: fill; */
   height: 250px;
   width: 165px;
   border-radius: 4px;
