@@ -12,14 +12,14 @@ function Row({title, genre, isLargeRow}) {
         
         genre.map((book) => (
           <li  key={book.id}> 
-       <img className='row-img-large' src={book.coverImageUrl} onClick={() => navigate(`/products/${book.id}`)}/>
+       <img className='row-img-large' src={book.coverImageUrl} />
           </li>
         ))
     :
     
     genre.map((book) => (
       <li  key={book.id}> 
-      <img className='row-img' src={book.coverImageUrl} onClick={() => navigate(`/products/${book.id}`)}/>
+      <img className='row-img' src={book.coverImageUrl} />
       </li>
     ))}
     </div>
