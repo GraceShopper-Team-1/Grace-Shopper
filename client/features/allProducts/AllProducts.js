@@ -1,13 +1,15 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import { fetchAllProducts } from "./allProductsSlice";
 import { addToCart } from "../cart/cartSlice";
+import LoadingScreen from "../loadingScreen/LoadingScreen";
 import Toast from "../toast/Toast";
 
 function AllProducts() {
 	const dispatch = useDispatch();
 	const products = useSelector((state) => state.allProducts.products);
+  const loading = useSelector((state) => state.allProducts.loading);
 	const isLoggedIn = useSelector((state) => !!state.auth.me.id);
 
 	useEffect(() => {
@@ -36,6 +38,10 @@ function AllProducts() {
 
 	return (
 		<div id="all-products">
+      {loading ? (
+          <LoadingScreen />
+        ) : (
+        <div>
 			<h3>Bestsellers</h3>
 			<div className="column-container">
 				{products.map((product) => (
@@ -63,7 +69,9 @@ function AllProducts() {
 						<Toast />
 					</li>
 				))}
+        </div>
 			</div>
+      })
 		</div>
 	);
 }
