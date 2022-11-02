@@ -4,28 +4,19 @@ import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchAllProducts } from "../allProducts/allProductsSlice";
 
-function Row({ title, genre, isLargeRow }) {
+function Row({ title, genre, isLargeRow, productArray }) {
   const navigate = useNavigate();
-  const dispatch = useDispatch();
-  const products = useSelector((state) => state.allProducts.products);
-
-  const bookInfo = products.map(({id,coverImageUrl, description}) => {
+  const bookInfo = productArray.map(({id,coverImageUrl, description}) => {
     return {
       id,
       coverImageUrl,
       description: description !== null ? description : "You just gotta give this book a try..."
     }
-    
-   })
+    })
 
   const genreBooks = bookInfo.filter((book) => {
       return book.description.includes(genre)
   })
-
-
-  useEffect(() => {
-    dispatch(fetchAllProducts());
-  }, [dispatch]);
 
   return (
     <div className="row-container">

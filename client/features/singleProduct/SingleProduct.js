@@ -23,6 +23,7 @@ function SingleProduct(props) {
   };
 
   useEffect(() => {
+    
     dispatch(fetchSingleProduct(productId));
   }, []);
 
