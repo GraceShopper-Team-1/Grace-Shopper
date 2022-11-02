@@ -9,7 +9,7 @@ import Toast from "../toast/Toast";
 function AllProducts() {
 	const dispatch = useDispatch();
 	const products = useSelector((state) => state.allProducts.products);
-  const loading = useSelector((state) => state.allProducts.loading);
+	const loading = useSelector((state) => state.allProducts.loading);
 	const isLoggedIn = useSelector((state) => !!state.auth.me.id);
 
 	useEffect(() => {
@@ -38,40 +38,40 @@ function AllProducts() {
 
 	return (
 		<div id="all-products">
-      {loading ? (
-          <LoadingScreen />
-        ) : (
-        <div>
-			<h3>Bestsellers</h3>
-			<div className="column-container">
-				{products.map((product) => (
-					<li key={product.id} className="product-entry">
-						<Link to={`/products/${product.id}`}>
-							<img
-								src={product.coverImageUrl}
-								alt="Cover Image"
-								className="product-img"
-							/>
-							<h3>{product.title}</h3>
-							<h5>{product.author}</h5>
-							<p>${product.price}</p>
-						</Link>
-						<button
-							type="button"
-							onClick={() => {
-								isLoggedIn
-									? handleAddToCart(product.id)
-									: handleGuestCart(product);
-							}}
-						>
-							Add to cart
-						</button>
-						<Toast />
-					</li>
-				))}
-        </div>
-			</div>
-      })
+			{loading ? (
+				<LoadingScreen />
+			) : (
+				<div>
+					<h3>Bestsellers</h3>
+					<div className="column-container">
+						{products.map((product) => (
+							<li key={product.id} className="product-entry">
+								<Link to={`/products/${product.id}`}>
+									<img
+										src={product.coverImageUrl}
+										alt="Cover Image"
+										className="product-img"
+									/>
+									<h3>{product.title}</h3>
+									<h5>{product.author}</h5>
+									<p>${product.price}</p>
+								</Link>
+								<button
+									type="button"
+									onClick={() => {
+										isLoggedIn
+											? handleAddToCart(product.id)
+											: handleGuestCart(product);
+									}}
+								>
+									Add to cart
+								</button>
+								<Toast />
+							</li>
+						))}
+					</div>
+				</div>
+			)}
 		</div>
 	);
 }
