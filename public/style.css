@@ -250,6 +250,74 @@ input {
   padding: 20px;
 }
 
+#toast {
+  visibility: hidden;
+  background: whitesmoke;
+  min-width: 230px;
+  padding: 15px;
+  color:rgb(80, 80, 187);
+  border: 1px solid rgb(182, 182, 255);;
+  border-radius: 2px;
+  z-index: 1;
+  position: fixed;
+  left: 83%;
+  font-family: monospace;
+  font-size: small;
+  font-weight: 100;
+  line-height: 12px;
+  box-shadow: 2px 2px 2px rgb(204, 204, 204);;
+}
+
+#toast.show {
+  visibility: visible;
+  animation: fadein 0.5s, fadeout 0.5s 2.5s;
+}
+
+@-webkit-keyframes fadein {
+  from {
+    bottom: 0;
+    opacity: 0;
+  }
+
+  to {
+    bottom: 30px;
+    opacity: 1;
+  }
+}
+
+@keyframes fadein {
+  from {
+    bottom: 0;
+    opacity: 0;
+  }
+
+  to {
+    bottom: 30px;
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes fadeout {
+  from {
+    bottom: 30px;
+    opacity: 1;
+  }
+
+  to {
+    bottom: 0;
+    opacity: 0;
+  }
+}
+
+@keyframes fadeout {
+  from {
+    bottom: 30px;
+    opacity: 1;
+  }
+
+  to {
+    bottom: 0;
+    opacity: 0;
 
 .loading-page-h1 {
   color: rgb(0, 0, 96);
