@@ -318,6 +318,8 @@ input {
   to {
     bottom: 0;
     opacity: 0;
+  }
+}
 
 .loading-page-h1 {
   color: rgb(0, 0, 96);
