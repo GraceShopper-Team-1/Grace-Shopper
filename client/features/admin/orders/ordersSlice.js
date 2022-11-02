@@ -11,14 +11,21 @@ export const fetchOrders = createAsyncThunk("orders/fetchAll", async () => {
 	return data;
 });
 
-const initialState = [];
+const initialState = {
+	allOrders: [],
+	loading: false
+};
 
 const ordersSlice = createSlice({
 	name: "orders",
 	initialState,
 	extraReducers: (builder) => {
 		builder.addCase(fetchOrders.fulfilled, (state, action) => {
-			return action.payload;
+			state.allOrders =  action.payload;
+			state.loading = false;
+		});
+		builder.addCase(fetchOrders.pending, (state, action) => {
+			state.loading = true;
 		});
 	},
 });

@@ -15,9 +15,10 @@ import {
   SingleUser,
   UsersDashboard,
   OrdersDashboard,
-  LoadingScreen,
+  LoadingScreen
 } from "../features";
 import { me } from "./store";
+
 
 /**
  * COMPONENT

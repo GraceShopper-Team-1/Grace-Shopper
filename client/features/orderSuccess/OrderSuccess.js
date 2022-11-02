@@ -39,7 +39,7 @@ function OrderSuccess() {
       ) : (
         <h3>Your order has been processed.</h3>
       )}
-        <button onClick={() => navigate("/products")}> Continue shopping </button>
+        <button className = "success-btn" onClick={() => navigate("/products")}> Continue shopping </button>
     </div>
   );
 }

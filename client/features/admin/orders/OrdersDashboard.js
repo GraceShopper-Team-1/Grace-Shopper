@@ -2,9 +2,11 @@ import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchOrders } from "./ordersSlice";
+import LoadingScreen from "../../loadingScreen/LoadingScreen"
 
 function OrdersDashboard() {
-  const orders = useSelector((state) => state.orders);
+  const orders = useSelector((state) => state.orders.allOrders);
+  const loading = useSelector((state) => state.orders.loading)
   
   const dispatch = useDispatch();
 
@@ -14,8 +16,10 @@ function OrdersDashboard() {
 
   return (
     <div>
-      <h1>Orders Dashboard</h1>
-      {orders?.map((order) => {
+      {loading ? (<LoadingScreen />) : ( <div>
+        
+        <h1>Orders Dashboard</h1>
+        {orders?.map((order) => {
         return (
           <div key={order.id} className="order">
             <p>Order ID: {order.id}</p>
@@ -28,9 +32,12 @@ function OrdersDashboard() {
             </div>
             <p>Status: {order?.status}</p>
             <p>Created at: {order?.createdAt}</p>
+            <hr/>
           </div>
         );
       })}
+      </div>) }
+     
     </div>
   );
 }

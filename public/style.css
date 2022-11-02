@@ -462,3 +462,8 @@ input {
     content: "...";
   }
 }
+
+.success-btn {
+   margin: 15px;
+   
+}
