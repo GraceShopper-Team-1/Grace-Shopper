@@ -16,8 +16,12 @@ function Cart() {
 	const books = JSON.parse(localStorage.getItem("guest"));
 
 	const handleCheckout = (userId) => {
-		dispatch(checkoutCart(userId));
-		navigate("/cart/success");
+		if (books.length === 0 || cart.length === 0) {
+			alert("Cannot check out empty cart!");
+		} else {
+			dispatch(checkoutCart(userId));
+			navigate("/cart/success");
+		}
 	};
 
 	const handleRemoveFromCart = (id) => {
