@@ -16,7 +16,7 @@ function Cart() {
 	const books = JSON.parse(localStorage.getItem("guest"));
 
 	const handleCheckout = (userId) => {
-		if (books.length === 0 || cart.length === 0) {
+		if (books.length === 0 || isLoggedIn && cart.length === 0) {
 			alert("Cannot check out empty cart!");
 		} else {
 			dispatch(checkoutCart(userId));
