@@ -27,17 +27,17 @@ function OrderSuccess() {
       {cart.map((item) => (
         <div className="cart-div">
           <li key={item.id}>
-            <img style={{display:'flex'}} className="cart-img" src={item.coverImageUrl} alt='Book Image'/>
             <div className="content">
+            <img className="cart-img" src={item.coverImageUrl} alt='Book Image'/>
             <h5 className="cart-title"> {item.title}</h5>
             <h6 className="cart-author">By: {item.author}</h6>
             <h6 className="cart-quantity">Quantity/Price: {`${item?.order_product.quantity} * ${item.price}`}</h6>
             <h5 className="cart-price">Total: {`${(item.price * item?.order_product.quantity).toFixed(2)}` }</h5></div>
             <hr/> 
           </li>
-          <button onClick={() => navigate("/")}> HOME </button>
         </div>
         ))}
+        <button onClick={() => navigate("/")}> HOME </button>
     </div>
   );
 }
