@@ -4,7 +4,6 @@ import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect } from "react";
 
-
 function OrderSuccess() {
   const navigate = useNavigate()
   const dispatch = useDispatch();
@@ -14,15 +13,11 @@ function OrderSuccess() {
   useEffect(() => {
     dispatch(fetchCart(userId));
   }, [dispatch]);
-
-
-
  
   return (
     <div>
       <h1> THANK YOU FOR YOUR ORDER!</h1>
       <h3>Items In Your Order:</h3>
-
 
       {cart.map((item) => (
         <div className="cart-div">

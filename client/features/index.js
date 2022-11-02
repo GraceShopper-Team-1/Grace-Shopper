@@ -12,3 +12,4 @@ export { default as SingleUser } from "./admin/users/SingleUser";
 export { default as UsersDashboard } from "./admin/users/UsersDashboard";
 export { default as NotFoundPage } from "./notFoundPage/NotFound";
 export { default as OrdersDashboard } from "./admin/orders/OrdersDashboard";
+export { default as Toast } from "./toast/Toast";
