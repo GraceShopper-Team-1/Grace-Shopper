@@ -15,7 +15,7 @@ function OrderSuccess() {
     dispatch(fetchCart(userId));
   }, [dispatch]);
 
-  console.log(cart[0], "CART****")
+
 
  
   return (
