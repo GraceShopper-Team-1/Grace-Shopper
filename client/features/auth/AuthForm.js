@@ -21,6 +21,7 @@ const AuthForm = ({ name, displayName }) => {
     const password = evt.target.password.value;
     const email = evt.target.email.value;
     dispatch(authenticate({ username, password, email, method: formName }));
+    navigate('/')
   };
 
   return (
