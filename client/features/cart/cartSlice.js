@@ -2,63 +2,60 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
 export const fetchCart = createAsyncThunk("cart/fetchAll", async () => {
-  const token = localStorage.getItem("token");
-  if (token !== null) {
-    const { data } = await axios.get(`/api/cart/`, {
-      headers: { authorization: token },
-    });
-    localStorage.setItem("books", JSON.stringify(data));
-    return data;
-  } else {
-    localStorage.getItem("guest");
-    const books = JSON.parse(localStorage.getItem("guest"));
-    localStorage.setItem("guest", JSON.stringify(books));
-   
-    return books;
-  }
+	const token = localStorage.getItem("token");
+	if (token !== null) {
+		const { data } = await axios.get(`/api/cart/`, {
+			headers: { authorization: token },
+		});
+		return data;
+	} else {
+		const books = JSON.parse(localStorage.getItem("guest"));
+		localStorage.setItem("guest", JSON.stringify(books));
+		return books;
+	}
 });
 
 export const addToCart = createAsyncThunk("cart/add", async ({ productId }) => {
-  const token = localStorage.getItem("token");
-  if (token) {
-    const { data } = await axios.put(
-      `/api/cart/edit/`,
-      {
-        productId,
-      },
-      { headers: { authorization: token } }
-    );
-    return data;
-  }
+	const token = localStorage.getItem("token");
+	if (token) {
+		const { data } = await axios.put(
+			`/api/cart/edit/`,
+			{
+				productId,
+			},
+			{ headers: { authorization: token } }
+		);
+		return data;
+	}
 });
 
 export const removeFromCart = createAsyncThunk("removeFromCart", async (id) => {
-  const token = localStorage.getItem("token");
-  if (token) {
-    const { data } = await axios.delete(`/api/cart/${id}`);
-    return id;
-  }
+	const token = localStorage.getItem("token");
+	if (token) {
+		const { data } = await axios.delete(`/api/cart/${id}`);
+		return id;
+	}
 });
 
 export const checkoutCart = createAsyncThunk("checkoutCart", async () => {
-  const token = localStorage.getItem("token");
-  if (token) {
-    const { data } = await axios.put(
-      `/api/cart/success/`,
-      {},
-      { headers: { authorization: token } }
-    );
-    return data;
-  } else {
-    const books = localStorage.getItem("guest");
-    const order = JSON.parse(books);
-    return order;
-  }
+	const token = localStorage.getItem("token");
+	if (token) {
+		const { data } = await axios.put(
+			`/api/cart/success/`,
+			{},
+			{ headers: { authorization: token } }
+		);
+		return data;
+	} else {
+		const books = localStorage.getItem("guest");
+		const order = JSON.parse(books);
+		return order;
+	}
 });
 
 const initialState = {
-  cart: [],
-  paidCart: [],
+	cart: [],
+	paidCart: [],
 };
 
 const cartSlice = createSlice({
