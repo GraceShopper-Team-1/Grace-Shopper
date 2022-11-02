@@ -29,7 +29,6 @@ function AllProducts() {
 		dispatch(addToCart({ productId }));
 	};
 
-  // localStr
 	const newBooks = JSON.parse(localStorage.getItem("guest"));
 	if (!newBooks) localStorage.setItem("guest", []);
 	let productArr = [];
