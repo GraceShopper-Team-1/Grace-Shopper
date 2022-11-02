@@ -29,11 +29,22 @@ function AllProducts() {
 		dispatch(addToCart({ productId }));
 	};
 
+  // localStr
+	const newBooks = JSON.parse(localStorage.getItem("guest"));
+	if (!newBooks) localStorage.setItem("guest", []);
 	let productArr = [];
+	productArr.push(...newBooks);
+
 	const handleGuestCart = (product) => {
 		makeToast();
-		productArr.push(product);
+		const cartItem = productArr.find((item) => item.id === product.id);
+		if (cartItem) {
+			cartItem.quantity++;
+		} else {
+			productArr.push({ ...product, quantity: 1 });
+		}
 		localStorage.setItem("guest", JSON.stringify(productArr));
+		console.log("this is productArr", productArr);
 	};
 
 	return (
@@ -66,7 +77,7 @@ function AllProducts() {
 								>
 									Add to cart
 								</button>
-								<Toast message={"✔️ Added to cart"}/>
+								<Toast message={"✔️ Added to cart"} />
 							</li>
 						))}
 					</div>

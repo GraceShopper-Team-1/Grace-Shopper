@@ -80,7 +80,7 @@ router.put("/success", async (req, res, next) => {
     try {
       const currentOrder = await Order.findOne({
         where: {
-          userId: user.id || null, // guest checkout is null?
+          userId: user.id,
           status: "unfulfilled",
         },
         include: { model: Product, as: OrderProduct },

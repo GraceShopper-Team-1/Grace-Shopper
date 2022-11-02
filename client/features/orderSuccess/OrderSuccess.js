@@ -9,6 +9,7 @@ function OrderSuccess() {
   const dispatch = useDispatch();
   const cart = useSelector((state) => state.cart.paidCart);
   const userId = useSelector((state) => state.auth.me.id);
+  const isLoggedIn = useSelector((state) => !!state.auth.me.id);
 
   useEffect(() => {
     dispatch(fetchCart(userId));
@@ -17,22 +18,28 @@ function OrderSuccess() {
   return (
     <div>
       <h1> THANK YOU FOR YOUR ORDER!</h1>
-      <h3>Items In Your Order:</h3>
 
-      {cart.map((item) => (
-        <div className="cart-div">
-          <li key={item.id}>
-            <div className="content">
-            <img className="cart-img" src={item.coverImageUrl} alt='Book Image'/>
-            <h5 className="cart-title"> {item.title}</h5>
-            <h6 className="cart-author">By: {item.author}</h6>
-            <h6 className="cart-quantity">Quantity/Price: {`${item?.order_product.quantity} * ${item.price}`}</h6>
-            <h5 className="cart-price">Total: {`${(item.price * item?.order_product.quantity).toFixed(2)}` }</h5></div>
-            <hr/> 
-          </li>
+      { isLoggedIn ? (
+        <div>
+          <h3>Items In Your Order:</h3>
+          {cart.map((item) => (
+            <div className="cart-div">
+              <li key={item.id}>
+                <div className="content">
+                <img className="cart-img" src={item.coverImageUrl} alt='Book Image'/>
+                <h5 className="cart-title"> {item.title}</h5>
+                <h6 className="cart-author">By: {item.author}</h6>
+                <h6 className="cart-quantity">Quantity/Price: {`${item?.order_product.quantity} * ${item.price}`}</h6>
+                <h5 className="cart-price">Total: {`${(item.price * item?.order_product.quantity).toFixed(2)}` }</h5></div>
+                <hr/> 
+              </li>
+            </div>
+          ))}
         </div>
-        ))}
-        <button onClick={() => navigate("/")}> HOME </button>
+      ) : (
+        <h3>Your order has been processed.</h3>
+      )}
+        <button onClick={() => navigate("/products")}> Continue shopping </button>
     </div>
   );
 }
