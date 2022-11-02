@@ -1,6 +1,7 @@
+import { use } from "chai";
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { addProduct } from "../../allProducts/allProductsSlice";
 import LoadingScreen from "../../loadingScreen/LoadingScreen";
 
@@ -9,17 +10,19 @@ const AddProduct = () => {
   const [author, setAuthor] = useState("");
   const [coverImageUrl, setCoverImageUrl] = useState("");
   const [price, setPrice] = useState(0);
+
   const loading = useSelector((state) => state.allProducts.loading);
-
   const dispatch = useDispatch();
-
+  const navigate = useNavigate();
+  
   const handleSubmit = (event) => {
     event.preventDefault();
-    dispatch(addProduct({ title, author, coverImageUrl, price }));
+    await dispatch(addProduct({ title, author, coverImageUrl, price }));
     setTitle("");
     setAuthor("");
     setCoverImageUrl("");
     setPrice(0);
+    navigate("/admin/products");
   };
 
   return (
@@ -61,9 +64,7 @@ const AddProduct = () => {
             <br />
             <br />
 
-            <Link to="/admin/products">
-              <button type="submit">Submit</button>
-            </Link>
+            <button type="submit">Submit</button>
           </form>
         </div>
       )}

@@ -7,6 +7,7 @@ import LoadingScreen from "../loadingScreen/LoadingScreen";
 
 function AllProducts() {
   const dispatch = useDispatch();
+
   const products = useSelector((state) => state.allProducts.products);
   const loading = useSelector((state) => state.allProducts.loading);
   const userId = useSelector((state) => state.auth.me.id);
@@ -19,10 +20,10 @@ function AllProducts() {
   const handleAddToCart = (productId) => {
     dispatch(addToCart({ productId }));
   };
+  
   let productArr = [];
   const handleGuestCart = (product) => {
     productArr.push(product);
-
     localStorage.setItem("guest", JSON.stringify(productArr));
   };
 
