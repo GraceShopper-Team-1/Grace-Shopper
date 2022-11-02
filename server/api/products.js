@@ -9,11 +9,11 @@ module.exports = router;
 // GET api/products
 router.get("/", async (req, res, next) => {
 	try {
-		const product = await Product.findAll({
+		const products = await Product.findAll({
 			include: Order,
 			order: [["author", "ASC"]],
 		});
-		res.json(product);
+		res.json(products);
 	} catch (err) {
 		next(err);
 	}

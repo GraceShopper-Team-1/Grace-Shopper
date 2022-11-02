@@ -12,7 +12,6 @@ import { Link, useNavigate } from "react-router-dom";
 const AuthForm = ({ name, displayName }) => {
   const navigate = useNavigate();
   const { error } = useSelector((state) => state.auth);
-
   const dispatch = useDispatch();
 
   const handleSubmit = (evt) => {
