@@ -66,7 +66,7 @@ function AllProducts() {
 								>
 									Add to cart
 								</button>
-								<Toast />
+								<Toast message={"✔️ Added to cart"}/>
 							</li>
 						))}
 					</div>

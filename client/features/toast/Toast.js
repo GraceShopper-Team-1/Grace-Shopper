@@ -1,9 +1,9 @@
 import React from "react";
 
-const Toast = () => {
+const Toast = (props) => {
 	return (
 		<div id="toast">
-			<span>✔ Added to cart</span>
+			<span>{props.message}</span>
 		</div>
 	);
 };

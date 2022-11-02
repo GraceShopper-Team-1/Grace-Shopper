@@ -34,7 +34,7 @@ const Navbar = () => {
 								src="https://static-00.iconduck.com/assets.00/shopping-cart-icon-512x462-yrde1eu0.png"
 							/>
 						</Link>
-						<h4>Welcome Admin {username}</h4>
+						<h4>Welcome, {username} (admin)</h4>
 						<button type="button" onClick={logoutAndRedirectHome}>
 							Logout
 						</button>
@@ -50,7 +50,7 @@ const Navbar = () => {
 								src="https://static-00.iconduck.com/assets.00/shopping-cart-icon-512x462-yrde1eu0.png"
 							/>
 						</Link>
-						<h4>Welcome {username}</h4>
+						<h4>Welcome, {username}</h4>
 						<button type="button" onClick={logoutAndRedirectHome}>
 							Logout
 						</button>
@@ -65,9 +65,15 @@ const Navbar = () => {
 								src="https://static-00.iconduck.com/assets.00/shopping-cart-icon-512x462-yrde1eu0.png"
 							/>
 						</Link>
-						<h4>Welcome to Bookworm</h4>
-						<Link to="/login">Login</Link>
-						<Link to="/signup">Sign Up</Link>
+						<div className="flex-container">
+							<h4 className="flex-item">Welcome, guest</h4>
+							<Link to="/login" className="flex-item">
+								Login
+							</Link>
+							<Link to="/signup" className="flex-item">
+								Sign Up
+							</Link>
+						</div>
 					</div>
 				)}
 			</nav>
