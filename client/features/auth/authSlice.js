@@ -56,6 +56,7 @@ export const authSlice = createSlice({
   initialState: {
     me: {},
     error: null,
+     loading: false
   },
   reducers: {
     logout(state, action) {
@@ -67,6 +68,10 @@ export const authSlice = createSlice({
   extraReducers: (builder) => {
     builder.addCase(me.fulfilled, (state, action) => {
       state.me = action.payload;
+      state.loading = false
+    })
+    builder.addCase(me.pending, (state, action) => {
+      state.loading = true;
     });
     builder.addCase(me.rejected, (state, action) => {
       state.error = action.error;
