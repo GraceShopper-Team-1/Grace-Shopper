@@ -69,14 +69,6 @@ const cartSlice = createSlice({
 			})
 			.addCase(addToCart.fulfilled, (state, action) => {
 				state.cart.push(action.payload);
-				// const cartItem = state.cart.find(
-				// 	(item) => item.productId === action.payload.productId
-				// );
-				// if (cartItem) {
-				// 	cartItem.quantity++;
-				// } else {
-				// 	state.cart.push({ ...action.payload, quantity: 1 });
-				// }
 			})
 			.addCase(removeFromCart.fulfilled, (state, action) => {
 				state.cart = state.cart.filter((cart) => cart.id !== action.payload);
