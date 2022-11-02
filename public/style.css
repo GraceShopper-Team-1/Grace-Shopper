@@ -211,8 +211,9 @@ input {
 
 .cart-div {
   flex-direction: row;
-  margin-left: auto;
-  padding: 20px;
+  margin: 1px;
+  /* margin-left: auto; */
+  padding: 10px;
 }
 
 .cart-img {
@@ -226,7 +227,7 @@ input {
 }
 
 .cart-author {
-  font-size: 0.7rem;
+  font-size: 0.9rem;
 
   text-align: right;
 }
