@@ -41,10 +41,11 @@ function OrderSuccess() {
 										alt="Book Image"
 									/>
 									<h5 className="cart-title">
-										{item.title} (x{item?.order_product.quantity})
+										{item.title}
 									</h5>
-									<h5 className="cart-author">{item.author}</h5>
-									<h5 className="cart-quantity">${item.price}</h5>
+									<h5 className="cart-author">By: {item.author}</h5>
+									<h5 className="cart-quantity">Quantity: {item?.order_product?.quantity}</h5>
+									<h5 className="cart-quantity">Price: ${item.price}</h5>
 									<br />
 									<h5 className="cart-price">
 										Total price: $
