@@ -52,8 +52,8 @@ function AllProducts() {
 				<LoadingScreen />
 			) : (
 				<div>
-					<h3>Bestsellers</h3>
-					<div className="column-container">
+					<h2>All Books</h2>
+					<div className="column-container all-products-container">
 						{products.map((product) => (
 							<li key={product.id} className="product-entry">
 								<Link to={`/products/${product.id}`}>

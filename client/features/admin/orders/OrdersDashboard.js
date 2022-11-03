@@ -18,9 +18,9 @@ function OrdersDashboard() {
     <div>
       {loading ? (<LoadingScreen />) : ( <div>
         
-        <h1>Orders Dashboard</h1>
+        <h2>Orders Dashboard</h2>
         {orders?.map((order) => {
-        return (
+        return (  
           <div key={order.id} className="order">
             <p>Order ID: {order.id}</p>
             <p>User: {order.user?.username || "Guest"}</p>

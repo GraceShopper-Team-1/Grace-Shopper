@@ -67,12 +67,16 @@ form div {
 }
 
 .row-img{
-  width: fit-content;
+  /* width: fit-content; */
   border: 15px;
-  padding: 15px;
-  height: 300px;
+  margin: 5px;
+  /* height: 300px; */
+  height: 250px;
+  width: 165px;
   display: flex;
- 
+  border-radius: 4px;
+  box-shadow: 2px 2px 8px gray;
+  z-index: 1;
 }
 
 .row-img-large {
@@ -84,14 +88,16 @@ form div {
 .row-img-large:hover {
   transition: 900ms ease-in-out;
   transform: scale(1.15);
-  opacity: 0.7;
+  /* filter: brightness(120%); */
+  opacity: 0.8;
   cursor: pointer;
 }
 
 .row-img:hover {
-  transition: 250ms ease;
-  transform: scale(1.15);
-  opacity: 0.7;
+  transition: 150ms ease;
+  transform: scale(1.05);
+  /* filter: brightness(120%); */
+  opacity: 0.8;
   cursor: pointer;
 }
 
@@ -110,11 +116,21 @@ form div {
   padding: 10px;
 }
 
-.product-entry {
+.column-container > h3 {
   width: 100%;
+}
+
+.all-products-container {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 10px;
+}
+
+.product-entry {
+  width: 20%;  
   flex: row;
   flex-wrap: wrap;
-  padding: 20px;
+  padding: 10px;
 }
 
 .product-img {
@@ -126,7 +142,8 @@ form div {
 
 .product-img:hover {
   transition: 150ms ease;
-  transform: scale(1.03);
+  transform: scale(1.05);
+  opacity: 0.8;
 }
 
 .single-img {
@@ -165,6 +182,7 @@ button:hover {
   height: 445px;
   object-fit: contain;
   transform: scale(1.05);
+  margin-bottom: 20px;
 }
 
 #banner:hover {
@@ -177,7 +195,7 @@ button:hover {
 }
 
 .linebreak-below-banner {
-  margin-top: 10px;
+  margin-top: 30px;
 }
 
 .auth-form {
@@ -461,5 +479,8 @@ input {
 
 .success-btn {
    margin: 15px;
-   
+}
+
+.footer {
+  margin-bottom: 30px;
 }

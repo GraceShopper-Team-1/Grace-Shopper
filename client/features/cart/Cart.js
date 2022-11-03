@@ -45,7 +45,8 @@ function Cart() {
 
 	return (
 		<div id="shopping-cart">
-			<h3>Shopping Cart</h3>
+			<h2>Shopping Cart</h2>
+			<h3>Order details:</h3>
 			<div className="column-container">
 				{isLoggedIn ? (
 					cart.length ? (
@@ -57,9 +58,8 @@ function Cart() {
 										alt="Cover Image"
 										className="product-img"
 									/>
-									<h3>Order details:</h3>
 									<h3>{cartItem.title}</h3>
-									<h5>By: {cartItem.author}</h5>
+									<h5>{cartItem.author}</h5>
 									<p>${cartItem.price}</p>
 									<p>Quantity: {cartItem?.order_product?.quantity}</p>
 								</Link>
@@ -69,7 +69,7 @@ function Cart() {
 										handleRemoveFromCart(cartItem.id);
 									}}
 								>
-									Remove from cart
+									Remove
 								</button>
 							</li>
 						))
@@ -85,9 +85,8 @@ function Cart() {
 									alt="Cover Image"
 									className="product-img"
 								/>
-								<h3>Order details:</h3>
 								<h3>{book.title}</h3>
-								<h5>By: {book.author}</h5>
+								<h5>{book.author}</h5>
 								<p>${book.price}</p>
 								<p>Quantity: {book.quantity}</p>
 							</Link>
@@ -95,7 +94,7 @@ function Cart() {
 								type="button"
 								onClick={() => handleRemoveFromGuestCart(book.id)}
 							>
-								Remove from cart
+								Remove
 							</button>
 						</li>
 					))
@@ -103,7 +102,7 @@ function Cart() {
 					<h3>Your cart is empty!</h3>
 				)}
 			</div>
-			<div>
+			<div className="footer">
 				<button
 					type="submit"
 					onClick={() => {

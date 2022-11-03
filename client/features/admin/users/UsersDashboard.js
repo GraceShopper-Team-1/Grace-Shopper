@@ -13,12 +13,12 @@ function UsersDashboard() {
 
 	return (
 		<div>
-			<h1>Users Dashboard</h1>
+			<h2>Users Dashboard</h2>
 			{users.map((user) => {
 				return (
 					<li key={user.id}>
 						<Link to={`/admin/users/${user.id}`}>
-							<span>{user.username}</span> 
+							<span>{user.username}</span>
 							<p>{user.email}</p>
 						</Link>
 					</li>

@@ -24,7 +24,7 @@ const Navbar = () => {
 				{isLoggedIn && isAdmin ? (
 					<div className="navbar">
 						<Link to="/home">Home</Link>
-						<Link to="/products">Browse</Link>
+						<Link to="/products">Browse All</Link>
 						<Link to="/admin/products">Manage Products</Link>
 						<Link to="/admin/users">Users</Link>
 						<Link to="/admin/orders">Orders</Link>
@@ -41,9 +41,8 @@ const Navbar = () => {
 					</div>
 				) : isLoggedIn ? (
 					<div className="navbar">
-						{/* The navbar will show these links after you log in */}
 						<Link to="/home">Home</Link>
-						<Link to="/products">Browse</Link>
+						<Link to="/products">Browse All</Link>
 						<Link to="/cart">
 							<img
 								className="cart-icon"
@@ -58,7 +57,7 @@ const Navbar = () => {
 				) : (
 					<div className="navbar">
 						<Link to="/home">Home</Link>
-						<Link to="/products">Browse</Link>
+						<Link to="/products">Browse All</Link>
 						<Link to="/cart">
 							<img
 								className="cart-icon"
