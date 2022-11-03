@@ -24,7 +24,7 @@ function OrderSuccess() {
 						Order total: $
 						{cart
 							.reduce(
-								(acc, curr) => acc + curr.order_product.quantity * curr.price,
+								(acc, curr) => acc + curr.order_product?.quantity * curr.price,
 								0
 							)
 							.toFixed(2)}
