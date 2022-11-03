@@ -36,6 +36,7 @@ const AddProduct = () => {
 						<label htmlFor="title">Title:</label>
 						<input
 							type="text"
+							placeholder="Title"
 							name="title"
 							value={title}
 							onChange={(event) => setTitle(event.target.value)}
@@ -43,13 +44,15 @@ const AddProduct = () => {
 						<label htmlFor="author">Author:</label>
 						<input
 							type="text"
+							placeholder="Author"
 							name="author"
 							value={author}
 							onChange={(event) => setAuthor(event.target.value)}
 						/>
-						<label htmlFor="coverImageUrl">Cover Image URL:</label>
+						<label htmlFor="coverImageUrl">Cover image URL:</label>
 						<input
 							type="text"
+							placeholder="Cover image URL"
 							name="coverImageUrl"
 							value={coverImageUrl}
 							onChange={(event) => setCoverImageUrl(event.target.value)}
@@ -57,6 +60,7 @@ const AddProduct = () => {
 						<label htmlFor="price">Price:</label>
 						<input
 							type="text"
+							placeholder="Price"
 							name="price"
 							value={price}
 							onChange={(event) => setPrice(event.target.value)}

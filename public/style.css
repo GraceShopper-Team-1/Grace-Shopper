@@ -22,6 +22,9 @@ a:hover {
 
 label {
   display: block;
+  margin: 10px 0 10px 0;
+  font-weight: bold;
+  text-align: left;
 }
 
 .navbar {
@@ -46,16 +49,43 @@ nav h4 {
   margin: 1em;
 }
 
+form {
+  padding: 30 100 30 100;
+  margin: 30px 200px 30px 200px;
+}
+
 form div {
   margin: 1em;
   display: inline-block;
+}
+
+input,
+select,
+textarea {
+  width: 100%;
+  height: 35px;
+  border: 1px solid rgb(204, 204, 255);
+  border-radius: 7px;
+  text-align: left;
+  padding: 10px;
+  font-family: "Arvo";
+}
+
+::placeholder {
+  color: rgb(192, 192, 232);
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  border: 1px solid rgb(129, 133, 255);
+  outline: 0;
 }
 
 .rowBooks {
   overflow-x: scroll;
   display: flex;
   overflow-y: hidden;
-  
 }
 .rowBooks::-webkit-scrollbar{
   display: none;
@@ -88,7 +118,6 @@ form div {
 .row-img-large:hover {
   transition: 900ms ease-in-out;
   transform: scale(1.15);
-  /* filter: brightness(120%); */
   opacity: 0.8;
   cursor: pointer;
 }
@@ -96,7 +125,6 @@ form div {
 .row-img:hover {
   transition: 150ms ease;
   transform: scale(1.05);
-  /* filter: brightness(120%); */
   opacity: 0.8;
   cursor: pointer;
 }
@@ -215,19 +243,9 @@ span {
   margin: none;
 }
 
-label {
-  margin-bottom: 10px;
-  font-weight: bold;
-}
-
-input {
-  height: 25px;
-  border-radius: 5px;
-  border: none;
-}
-
 .product-description {
-  padding: 1rem;
+  margin: 30px 20% 10px 20%;
+  text-align: justify;
 }
 
 .not-found-img {

@@ -30,7 +30,7 @@ function Row({ title, genre, isLargeRow, productArray }) {
 					? genreBooks?.map((book) => (
 							<li key={book.id}>
 								<img
-									className="product-img"
+									className="row-img-large product-img"
 									src={book.coverImageUrl}
 									onClick={() => navigate(`/products/${book.id}`)}
 								/>
