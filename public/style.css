@@ -514,6 +514,10 @@ span {
    margin: 15px;
 }
 
+.edit-submit {
+  margin-top: 25px;
+}
+
 .footer {
   margin-bottom: 30px;
 }

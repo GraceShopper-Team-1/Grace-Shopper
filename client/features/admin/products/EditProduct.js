@@ -25,6 +25,7 @@ const EditProduct = () => {
 	return (
 		<div className="sticky">
 			<SingleProduct />
+			<hr />
 			<h3 className="gray">Edit entry</h3>
 			<form onSubmit={handleSubmit}>
 				<label htmlFor="title">Title:</label>
@@ -59,7 +60,8 @@ const EditProduct = () => {
 					value={price}
 					onChange={(event) => setPrice(event.target.value)}
 				/>
-				<button type="submit">Submit</button>
+				<br/>
+				<button className="edit-submit" type="submit">Submit</button>
 			</form>
 		</div>
 	);
