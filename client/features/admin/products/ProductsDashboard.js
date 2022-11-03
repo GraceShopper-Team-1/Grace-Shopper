@@ -11,7 +11,6 @@ import {
 function ProductsDashboard() {
 	const dispatch = useDispatch();
 	const products = useSelector((state) => state.allProducts.products);
-	//   const userId = useSelector((state) => state.auth.me.id);
 	const loading = useSelector((state) => state.allProducts.loading);
 
 	useEffect(() => {
@@ -30,13 +29,11 @@ function ProductsDashboard() {
 				<div>
 					<h2>Products Dashboard</h2>
 					<Link to={"/admin/products/add"}>
-						<br />
 						<button type="button">Add product</button>
 					</Link>
 					<br />
 					<br />
 					<hr />
-					<br />
 					{products.map((product) => (
 						<li key={product.id} className="admin-entry">
 							<Link to={`/products/${product.id}`}>

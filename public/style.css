@@ -11,6 +11,10 @@ body {
   margin: 0px;
 }
 
+/* h1, h2, h3, h4, h5, h6, p {
+  margin: 10px;
+} */
+
 a {
   text-decoration: none;
   color: rgb(0, 0, 96);
@@ -287,7 +291,7 @@ span {
 
 .admin-img {
   padding: 20px;
-  height: 350px;
+  height: 250px;
 }
 
 #toast {
@@ -501,4 +505,36 @@ span {
 
 .footer {
   margin-bottom: 30px;
+}
+
+table {
+  width: 100%;
+}
+
+thead tr {
+  background:rgb(80, 80, 187);
+  color: #ffffff;
+  text-align: left;
+}
+
+th, td {
+  padding: 12px 15px;
+}
+
+tbody tr {
+  border-bottom: 1px solid #dddddd;
+}
+
+tbody tr:nth-of-type(even) {
+  background-color: #e5e8ef;
+}
+
+tbody tr:last-of-type {
+  border-bottom: 2px solid rgb(80, 80, 187);
+}
+
+.pfp {
+  margin-top: 35px;
+  filter: hue-rotate(10deg);
+  opacity: 0.8;
 }
