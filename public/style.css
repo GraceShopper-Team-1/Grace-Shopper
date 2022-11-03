@@ -302,8 +302,9 @@ span {
 }
 
 .admin-img {
-  padding: 20px;
-  height: 250px;
+  /* padding: 20px; */
+  height: 150px;
+  border-radius: 4px;
 }
 
 #toast {

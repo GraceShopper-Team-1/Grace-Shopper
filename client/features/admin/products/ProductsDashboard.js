@@ -33,34 +33,57 @@ function ProductsDashboard() {
 					</Link>
 					<br />
 					<br />
-					<hr />
-					{products.map((product) => (
-						<li key={product.id} className="admin-entry">
-							<Link to={`/products/${product.id}`}>
-								<img
-									src={product.coverImageUrl}
-									alt="Cover Image"
-									className="admin-img"
-								/>
-								<p>{product.title}</p>
-								<p>{product.author}</p>
-								<p>${product.price}</p>
-							</Link>
-							<Link to={`/admin/products/${product.id}`}>
-								<button className="admin-btn" type="button">
-									Edit
-								</button>
-							</Link>
-							<button
-								className="admin-btn"
-								type="button"
-								onClick={() => handleDeleteProduct(product.id)}
-							>
-								Delete
-							</button>
-							<hr />
-						</li>
-					))}
+					<table>
+						<thead>
+							<tr>
+								<th></th>
+								<th>Cover Image</th>
+								<th>Title</th>
+								<th>Author</th>
+								<th>Price</th>
+							</tr>
+						</thead>
+						<tbody>
+							{products.map((product) => (
+								<tr key={product.id} className="admin-entry">
+									<td>
+										<Link to={`/admin/products/${product.id}`}>
+											<button className="admin-btn" type="button">
+												Edit
+											</button>
+										</Link>
+										<button
+											className="admin-btn"
+											type="button"
+											onClick={() => handleDeleteProduct(product.id)}
+										>
+											Delete
+										</button>
+										<p> </p>
+										{/* <span>{product.id}</span> */}
+									</td>
+									<td>
+										<img
+											src={product.coverImageUrl}
+											alt="Cover Image"
+											className="admin-img"
+										/>
+									</td>
+									<td>
+										<Link to={`/products/${product.id}`}>
+											<p>{product.title}</p>
+										</Link>
+									</td>
+									<td>
+										<p>{product.author}</p>
+									</td>
+									<td>
+										<p>${product.price}</p>
+									</td>
+								</tr>
+							))}
+						</tbody>
+					</table>
 				</div>
 			)}
 		</div>
