@@ -15,6 +15,10 @@ body {
   margin: 10px;
 } */
 
+h5 {
+  margin: 3px;
+}
+
 a {
   text-decoration: none;
   color: rgb(0, 0, 96);
@@ -286,12 +290,12 @@ span {
 }
 
 .cart-price {
-  font-size: 1rem;
+  font-size: 1.5rem;
 }
 
-.cart-quantity {
+/* .cart-quantity {
   font-size: 0.8 rem;
-}
+} */
 
 .admin-btn {
   margin: 10px;

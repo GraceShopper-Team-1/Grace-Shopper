@@ -102,6 +102,15 @@ function Cart() {
 					<h3>Your cart is empty!</h3>
 				)}
 			</div>
+			<h2>
+				Cart total: $
+				{(isLoggedIn && cart.length
+					? cart.reduce((a, c) => a + c.price * c.order_product?.quantity, 0)
+					: !isLoggedIn && books.length
+					? books.reduce((a, c) => a + c.price * c.quantity, 0)
+					: 0
+				).toFixed(2)}
+			</h2>
 			<div className="footer">
 				<button
 					type="submit"

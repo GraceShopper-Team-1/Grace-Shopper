@@ -39,7 +39,7 @@ const AuthForm = ({ name, displayName }) => {
 
         <div className="email">
           <label htmlFor="email">
-            <small>Email</small>
+            <small>Email</small> 
           </label>
           <input name="email" required="required" type="email" />
         </div>
