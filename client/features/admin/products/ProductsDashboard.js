@@ -19,6 +19,7 @@ function ProductsDashboard() {
 
 	const handleDeleteProduct = (productId) => {
 		dispatch(deleteProduct(productId));
+		// dispatch(fetchAllProducts());
 	};
 
 	return (

@@ -52,7 +52,7 @@ router.put("/:productId", checkForAdmin, async (req, res, next) => {
 // DELETE /api/products/:productId
 router.delete("/:productId", checkForAdmin, async (req, res, next) => {
 	try {
-		const product = await Product.findByPk(req.params.productId);
+		let product = await Product.findByPk(req.params.productId);
 		await product.destroy();
 		res.sendStatus(204);
 	} catch (error) {
