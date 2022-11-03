@@ -82,7 +82,7 @@ textarea {
 input:focus,
 select:focus,
 textarea:focus {
-  border: 1px solid rgb(129, 133, 255);
+  border: 1px solid rgb(72, 142, 255);
   outline: 0;
 }
 
@@ -234,11 +234,19 @@ button:hover {
   text-align: center;
   margin: 30px;
   max-width: 400px;
-  padding: 70px;
+  padding: 35px;
   margin-left: auto;
   margin-right: auto;
   background: rgb(166, 172, 233);
   border-radius: 5px;
+}
+
+.center-authform {
+  margin: 0;
+}
+
+.center-authform > div {
+  width: 90%;
 }
 
 span {
@@ -466,7 +474,6 @@ span {
     transform: rotateY( -180deg);
   }
 }
-
 
 /* Dots */
 @-webkit-keyframes Dots {

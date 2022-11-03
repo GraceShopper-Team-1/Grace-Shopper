@@ -29,7 +29,7 @@ const AuthForm = ({ name, displayName }) => {
       <span>Enter credentials:</span>
       <hr />
 
-      <form onSubmit={handleSubmit} name={name}>
+      <form className="center-authform" onSubmit={handleSubmit} name={name}>
         <div className="username">
           <label htmlFor="username">
             <small>Username*</small>
