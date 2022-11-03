@@ -107,7 +107,7 @@ function Cart() {
 				{(isLoggedIn && cart.length
 					? cart.reduce((a, c) => a + c.price * c.order_product?.quantity, 0)
 					: !isLoggedIn && books.length
-					? books.reduce((a, c) => a + c.price * c.quantity, 0)
+					? books.reduce((a, c) => a + c.price * c?.quantity, 0)
 					: 0
 				).toFixed(2)}
 			</h2>

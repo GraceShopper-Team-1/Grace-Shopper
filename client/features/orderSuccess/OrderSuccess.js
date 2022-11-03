@@ -24,7 +24,7 @@ function OrderSuccess() {
 						Order total: $
 						{cart
 							.reduce(
-								(acc, curr) => acc + curr.order_product?.quantity * curr.price,
+								(acc, curr) => acc + curr?.order_product?.quantity * curr.price,
 								0
 							)
 							.toFixed(2)}
@@ -48,7 +48,7 @@ function OrderSuccess() {
 									<br />
 									<h5 className="cart-price">
 										Total price: $
-										{`${(item.price * item?.order_product.quantity).toFixed(
+										{`${(item.price * item?.order_product?.quantity).toFixed(
 											2
 										)}`}
 									</h5>
