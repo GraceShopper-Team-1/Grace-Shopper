@@ -21,13 +21,13 @@ function SingleProduct(props) {
 	};
 
 	const handleAddToCart = (productId) => {
-    makeToast();
+		makeToast();
 		dispatch(addToCart({ productId }));
 	};
 
 	let productArr = [];
 	const handleGuestCart = (product) => {
-    makeToast();
+		makeToast();
 		productArr.push(product);
 		localStorage.setItem("guest", JSON.stringify(productArr));
 	};
@@ -49,7 +49,7 @@ function SingleProduct(props) {
 				<h2>${product.price}</h2>
 				<p>ISBN: {product.isbn}</p>
 			</div>
-			<div>
+			<div className="footer">
 				<button
 					type="button"
 					onClick={() => {
@@ -58,8 +58,8 @@ function SingleProduct(props) {
 				>
 					Add to cart
 				</button>
-				<Toast message={"✔️ Added to cart"} />
 			</div>
+			<Toast message={"✔️ Added to cart"} />
 		</div>
 	);
 }

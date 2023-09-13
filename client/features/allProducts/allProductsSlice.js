@@ -29,7 +29,7 @@ export const deleteProduct = createAsyncThunk(
     const { data } = await axios.delete(`/api/products/${productId}`, {
       headers: { authorization: token },
     });
-    return data;
+    return productId;
   }
 );
 

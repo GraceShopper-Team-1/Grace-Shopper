@@ -26,10 +26,10 @@ const AuthForm = ({ name, displayName }) => {
 
   return (
     <div className="auth-form">
-      <span>Enter Credentials Below</span>
+      <span>Enter credentials:</span>
       <hr />
 
-      <form onSubmit={handleSubmit} name={name}>
+      <form className="center-authform" onSubmit={handleSubmit} name={name}>
         <div className="username">
           <label htmlFor="username">
             <small>Username*</small>
@@ -39,7 +39,7 @@ const AuthForm = ({ name, displayName }) => {
 
         <div className="email">
           <label htmlFor="email">
-            <small>Email</small>
+            <small>Email</small> 
           </label>
           <input name="email" required="required" type="email" />
         </div>
@@ -57,7 +57,7 @@ const AuthForm = ({ name, displayName }) => {
       </form>
       <div>
         <Link to="/">
-          <button>Continue As Guest</button>
+          <button>Continue as guest</button>
         </Link>
       </div>
     </div>

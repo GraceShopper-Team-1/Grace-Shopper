@@ -13,17 +13,31 @@ function UsersDashboard() {
 
 	return (
 		<div>
-			<h1>Users Dashboard</h1>
-			{users.map((user) => {
-				return (
-					<li key={user.id}>
-						<Link to={`/admin/users/${user.id}`}>
-							<span>{user.username}</span> 
-							<p>{user.email}</p>
-						</Link>
-					</li>
-				);
-			})}
+			<h2>Users Dashboard</h2>
+			<table>
+				<thead>
+					<tr>
+						<th>User ID</th>
+						<th>Username</th>
+						<th>Email</th>
+					</tr>
+				</thead>
+				<tbody>
+					{users.map((user) => {
+						return (
+							<tr key={user.id}>
+								<td>{user.id}</td>
+								<td>
+									<Link to={`/admin/users/${user.id}`}>
+										<div>{user.username}</div>
+									</Link>
+								</td>
+								<td>{user.email}</td>
+							</tr>
+						);
+					})}
+				</tbody>
+			</table>
 		</div>
 	);
 }
